@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Container, useColorModeValue } from "@chakra-ui/react";
 import MainRoute from "./Routes/MainRoute";
 // import Footer from "./0603/Components/Footer/Footer";
@@ -18,5 +19,12 @@ function App() {
       {/* <Footer/> */}
     </Container>
   );
+=======
+import "./App.css";
+import MainRoute from "./pages/MainRoutes";
+
+function App() {
+  return <MainRoute />;
+>>>>>>> ddb717bd960300ecb58c97656a5b041d70a23062
 }
 export default App;
