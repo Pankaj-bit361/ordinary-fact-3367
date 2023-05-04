@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Container, useColorModeValue } from "@chakra-ui/react";
+import MainRoute from "./Routes/MainRoute";
+// import Footer from "./0603/Components/Footer/Footer";
+// import Navbar from "./0603/Components/NavBar";
+// import "./1265/src/App.css"
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container
+      background={useColorModeValue("root.black", "#f3f3f3")}
+      color={useColorModeValue("root.white", "root.black")}
+      maxW={"container.2xl"}
+      p='0'
+    >
+      {/* // navbar */}
+      {/* <Navbar/> */}
+      <MainRoute />
+      {/* // footer */}
+      {/* <Footer/> */}
+    </Container>
   );
 }
-
 export default App;
