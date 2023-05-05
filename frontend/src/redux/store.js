@@ -7,7 +7,7 @@ import {
 import { reducer as adminProductReducer } from "./AdminProductReducer/reducer";
 import { reducer as usersReducer } from "./UsersReducer/reducer";
 import { reducer as orderReducer } from "./OrderReducer/reducer";
-// import { reducer as ProductReducer } from "./Product/reducer";
+import { reducer as ProductReducer } from "./Product/reducer";
 import {reducer as CartReducer} from "./Cart/reducer"
 import thunk from "redux-thunk";
 
@@ -15,7 +15,7 @@ const root_reducer = combineReducers({
   adminProductReducer,
   usersReducer,
   orderReducer,
-
+  ProductReducer,
   CartReducer
 });
 

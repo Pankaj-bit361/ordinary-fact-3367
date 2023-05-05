@@ -7,6 +7,8 @@ import AdminAddProduct from "../pages/Admin/AdminAddProduct";
 import UserList from "./Admin/UserList";
 import AdminEditProduct from "./Admin/AdminEditProduct";
 import OrderList from "./Admin/OrderList";
+import Category from './Category';
+import SingleProduct from './../0883/components/SingleProduct';
 
 const MainRoute = () => {
   return (
@@ -19,7 +21,8 @@ const MainRoute = () => {
         <Route path="/edit-product/:id" element={<AdminEditProduct />}></Route>
         <Route path="/user-list" element={<UserList />} />
         <Route path="/order-list" element={<OrderList />} />
-
+        <Route path='/products' element={<Category />} />
+				<Route path='/products/:id' element={<SingleProduct />} />
         {/* <Route path="*" element={<PageNotFound />}></Route> */}
       </Routes>
     </div>
