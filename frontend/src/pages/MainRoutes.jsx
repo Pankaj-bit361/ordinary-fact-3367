@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "../pages/Home";
+import Home from "./Home";
 import DashboardMain from "../pages/Admin/DashboardMain";
 import ProductList from "../pages/Admin/ProductList";
 import AdminAddProduct from "../pages/Admin/AdminAddProduct";
