@@ -48,20 +48,19 @@ const theme = extendTheme({
 });
 root.render(
  
-<<<<<<< HEAD
+
   
-    <ChakraProvider>  
-=======
-  <Provider store={store}>
+	<BrowserRouter>
     <ChakraProvider theme={theme}>  
->>>>>>> c480b296f5f0083b0c22a56000dad85839d57adb
-    <BrowserRouter>
+
+   
     <Provider store={store}>
         <App />  
-        </Provider>
-        </BrowserRouter> 
-    </ChakraProvider>
-
+        
+		
+       </Provider>
+		</ChakraProvider>
+		</BrowserRouter> 
 
 );
 

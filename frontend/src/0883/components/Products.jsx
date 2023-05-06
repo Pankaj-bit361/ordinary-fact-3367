@@ -7,7 +7,7 @@ import CardSkeleton from "../utils/CardSkeleton";
 import Pagination from "./Pagination";
 import { ProductCard } from "./ProductCard.tsx";
 const Products = () => {
-	const { products, loading, error,total } = useSelector((state) => state.ProductReducer);
+	const { products, loading, error,total } = useSelector((state) => state.productReducer);
 
 	const ok=useSelector((state)=>state)
 	console.log(ok)

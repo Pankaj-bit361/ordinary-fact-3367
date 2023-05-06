@@ -7,6 +7,9 @@ import AdminAddProduct from "../pages/Admin/AdminAddProduct";
 import UserList from "./Admin/UserList";
 import AdminEditProduct from "./Admin/AdminEditProduct";
 import OrderList from "./Admin/OrderList";
+import Cart from "./Cart";
+import Category from "./Category";
+import SingleProduct from "../0883/components/SingleProduct";
 
 const MainRoute = () => {
   return (
