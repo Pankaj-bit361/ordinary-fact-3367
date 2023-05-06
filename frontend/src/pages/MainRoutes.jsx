@@ -7,6 +7,7 @@ import AdminAddProduct from "../pages/Admin/AdminAddProduct";
 import UserList from "./Admin/UserList";
 import AdminEditProduct from "./Admin/AdminEditProduct";
 import OrderList from "./Admin/OrderList";
+import Cart from "./Cart";
 
 const MainRoute = () => {
   return (
@@ -15,6 +16,7 @@ const MainRoute = () => {
         <Route path="/" element={<Home />} />
         <Route path="/admin" element={<DashboardMain />} />
         <Route path="/product-list" element={<ProductList />} />
+        <Route path="/cart" element={<Cart/>}></Route>
         <Route path="/add-product" element={<AdminAddProduct />}></Route>
         <Route path="/edit-product/:id" element={<AdminEditProduct />}></Route>
         <Route path="/user-list" element={<UserList />} />
