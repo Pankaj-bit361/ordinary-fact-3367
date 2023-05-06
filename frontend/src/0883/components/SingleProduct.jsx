@@ -1,4 +1,5 @@
 import React from "react";
+// import { useNavigate } from "react-router-dom";
 import {
 	Container,
 	SimpleGrid,
@@ -20,15 +21,17 @@ import {
 	Tooltip,
 } from "@chakra-ui/react";
 import { addToCart, singleData } from "../../redux/ProductReducer/action";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // import { Rating } from "./ProductCard";
 import { useDispatch } from "react-redux";
+import Offers from "../utils/Offers";
 // import Offers from "../utils/Offers";
 export default function SingleProduct() {
 	const [data, setData] = React.useState([{ name: "loading..." }]);
 	const [image, setImage] = React.useState("");
 	const [show, setShow] = React.useState(false);
 	const [show2, setShow2] = React.useState(false);
+	const navigate=useNavigate()
 	const dispatch = useDispatch();
 	const [quantity, setQuantity] = React.useState(1);
 	const { id } = useParams();
@@ -46,6 +49,8 @@ export default function SingleProduct() {
 	const handleCart = () => {
 		dispatch(addToCart(id, { quantity }));
 		setShow2(true);
+		alert("Item added successfully")
+		// navigate("/products/cart/payment")
 	};
 
 	return (
@@ -230,7 +235,7 @@ export default function SingleProduct() {
 					</Stack>
 				</SimpleGrid>
 			</Container>
-			{/* <Offers offers={data?.offers} /> */}
+			<Offers offers={data?.offers} />
 		</>
 	);
 }

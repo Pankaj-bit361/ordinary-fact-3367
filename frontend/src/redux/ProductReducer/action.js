@@ -1,4 +1,3 @@
-
 import * as types from "./actionTypes";
 import axios from "axios";
 const URL = "https://obtainable-gray-tenor.glitch.me/allproducts";

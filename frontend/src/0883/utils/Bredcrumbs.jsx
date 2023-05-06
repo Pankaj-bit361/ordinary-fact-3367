@@ -10,6 +10,7 @@ const Bredcrumbs = () => {
 				mt='2'
 				// border='1px solid red'
 				color='green.600'
+				
 				spacing='1.2rem'
 				separator={
 					<TriangleDownIcon
@@ -20,9 +21,11 @@ const Bredcrumbs = () => {
 				}
 				fontWeight='semibold'
 				fontSize='0.9rem'
-				mb='1.5rem'>
+				mb='1.5rem'
+				gap='20px'>
 				<BreadcrumbItem
 					fontSize='0.9rem'
+					gap={"10px"}
 					fontWeight='semibold'
 					color='green.600'
 					_hover={{
@@ -42,6 +45,7 @@ const Bredcrumbs = () => {
 					fontSize='0.9rem'
 					fontWeight='semibold'
 					color='green.600'
+					gap={"10px"}
 					_hover={{
 						textDecoration: "none",
 						cursor: "pointer",
