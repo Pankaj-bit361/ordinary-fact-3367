@@ -10,6 +10,7 @@ electronicRouter.get("/", async (req, res) => {
 electronicRouter.post("/add", async (req, res) => {
   try {
     const data = new ElectronicModel(req.body);
+    console.log(req.body)
     await data.save();
     res.status(200).send({ msg: "Created Pharma" });
   } catch (error) {
