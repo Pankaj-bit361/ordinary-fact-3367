@@ -2,20 +2,16 @@ const mongoose = require("mongoose");
 
 const pharmaSchema = mongoose.Schema(
   {
-    title: { type: String, require: true },
+    name: { type: String, require: true },
     price: { type: Number, require: true },
-    category: { type: String },
+    brand_name: { type: String },
+    media: [{ url: String }],
+    rating: {type:Number},
+    rating_count: {type:Number},
     quantity: { type: Number, require: true },
-    description: { type: String, require: true },
-    brand: { type: String, require: true },
-    discounted: { type: Number, require: true },
-    percentage: { type: Number, require: true },
-    images: {
-      img1: String,
-      img2: String,
-      img3: String,
-      img4: String,
-    },
+    pack_size: { type: String },
+    tracking_metadata: { es_score: Number, popularity: Number },
+    star_rating_percentage: { type: Number }
   },
   {
     versionKey: false,
