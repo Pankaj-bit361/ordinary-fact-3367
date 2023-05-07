@@ -1,3 +1,4 @@
+
 import { Grid } from "@chakra-ui/react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +8,10 @@ import CardSkeleton from "../utils/CardSkeleton";
 import Pagination from "./Pagination";
 import { ProductCard } from "./ProductCard.tsx";
 const Products = () => {
-	const { products, loading, error,total } = useSelector((state) => state.products);
+	const { products, loading, error,total } = useSelector((state) => state.productReducer);
+
+	const ok=useSelector((state)=>state)
+	console.log(ok)
 	const [searchParams, setSearchParams] = useSearchParams();
 	const location = useLocation();
 	const dispatch = useDispatch();

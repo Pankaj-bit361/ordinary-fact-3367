@@ -43,18 +43,22 @@ const theme = extendTheme({
 		},
 	},
 });
-
 root.render(
-	<>
-		{/* <ColorModeScript initialColorMode={theme.config.initialColorMode} /> */}
-		<ChakraProvider theme={theme}>
-			<BrowserRouter>
-				<Provider store={store}>
-					<App />
-				</Provider>
-			</BrowserRouter>
+ 
+
+  
+	<BrowserRouter>
+    <ChakraProvider theme={theme}>  
+
+   
+    <Provider store={store}>
+        <App />  
+        
+		
+       </Provider>
 		</ChakraProvider>
-	</>
+		</BrowserRouter> 
+
 
 );
 
