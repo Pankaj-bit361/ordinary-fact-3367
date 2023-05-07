@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const electronicSchema = mongoose.Schema(
+const orderSchema = mongoose.Schema(
   {
     name: { type: String, require: true },
     price: { type: Number, require: true },
@@ -12,14 +12,15 @@ const electronicSchema = mongoose.Schema(
     pack_size: { type: String },
     tracking_metadata: { es_score: Number, popularity: Number },
     star_rating_percentage: { type: Number },
+    authorID: { type: String, require: true },
   },
   {
     versionKey: false,
   }
 );
 
-const ElectronicModel = mongoose.model("electronic", electronicSchema);
+const OrderModel = mongoose.model("order", orderSchema);
 
 module.exports = {
-  ElectronicModel,
+  OrderModel,
 };
