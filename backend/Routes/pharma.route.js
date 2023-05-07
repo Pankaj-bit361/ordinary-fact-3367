@@ -33,7 +33,7 @@ if (limit) {
 pharmaRouter.get("/:id", async (req, res) => {
   const id = req.params.id
   try {
-  const data = await PharmaModel.find({ _id: id });
+  const data = await PharmaModel.findOne({ _id: id });
   res.status(200).send(data);
   } catch (error) {
     res.status(400).send({msg:error.message})
