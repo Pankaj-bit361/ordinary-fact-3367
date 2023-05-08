@@ -13,6 +13,7 @@ import {
   Select,
   SimpleGrid,
   Text,
+  Center,
 } from "@chakra-ui/react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
@@ -61,9 +62,11 @@ const Home = () => {
           padding="8%"
           bgImage={"https://i.ibb.co/4JS6wws/homepage-banner1.jpg"}
         >
-          <Text fontSize={"1.7vw"} color={"white"}>
-            Search for products & find verified sellers near you
-          </Text>
+          <Center>
+            <Text fontSize={"1.7vw"} color={"white"}>
+              Search for products & find verified sellers near you
+            </Text>
+          </Center>
           <Flex w="60%" m="auto">
             <Select
               borderRadius={"0px"}

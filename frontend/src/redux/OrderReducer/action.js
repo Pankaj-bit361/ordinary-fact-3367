@@ -17,7 +17,7 @@ export const getFailureOrder = () => {
 export const getOrderData = (dispatch) => {
   dispatch(getRequestOrder());
   axios
-    .get(`https://kind-jade-eagle-sari.cyclic.app/orders`)
+    .get(`https://distinct-blue-blazer.cyclic.app/order`)
     .then((res) => {
       dispatch(getOrderSuccess(res.data));
     })

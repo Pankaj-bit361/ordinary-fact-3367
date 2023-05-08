@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrderData } from "../../redux/OrderReducer/action";
-import axios from "axios";
+// import axios from "axios";
 function OrderTable() {
   const order = useSelector((store) => store.orderReducer.orders);
   const dispatch = useDispatch();
   const [user, setUser] = useState({});
-  function getUserInfo(userId) {
-    axios
-      .get(`https://kind-jade-eagle-sari.cyclic.app/auth/${userId}`)
-      .then((response) => {
-        setUser(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+  // function getUserInfo(userId) {
+  //   axios
+  //     .get(`https://kind-jade-eagle-sari.cyclic.app/auth/${userId}`)
+  //     .then((response) => {
+  //       setUser(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }
   useEffect(() => {
     dispatch(getOrderData);
   }, []);
@@ -377,33 +377,49 @@ function OrderTable() {
               <table class="table table-centered table-nowrap mb-0 rounded">
                 <thead class="thead-light">
                   <tr>
-                    <th class="border-0 rounded-start">Product Title</th>
-                    <th class="border-0">User ID</th>
+                    <th class="border-0 rounded-start">Images</th>
+                    <th class="border-0">Product Title</th>
+                    <th class="border-0">Brand Name</th>
+                    <th class="border-0">Qunatity</th>
                     <th class="border-0 rounded-end">Total Price</th>
                   </tr>
                 </thead>
                 <tbody>
                   {order.length > 0 &&
                     order.map((item) => {
+                      const firstImage =
+                        item.media.length > 0 ? item.media[0] : null;
                       return (
                         <tr key={item._id}>
                           <td>
-                            <b className="small">{item.product_title}</b>
+                            <img
+                              src={firstImage.url}
+                              alt={item.name}
+                              style={{ height: "50px", width: "50px" }}
+                            ></img>
                           </td>
                           <td>
+                            <b className="small">{item.name}</b>
+                          </td>
+                          {/* <td>
                             <p
                               className="small text-primary"
                               data-bs-toggle="modal"
                               data-bs-target="#userModal"
-                              onClick={() => getUserInfo(item.userID)}
+                              onClick={() => getUserInfo(item.authorID)}
                               style={{ cursor: "pointer" }}
                             >
                               {item.userID}
                             </p>
-                          </td>
-
+                          </td> */}
                           <td>
-                            <p className="small">{item.final_price}</p>
+                            <p className="small">{item.brand_name}</p>
+                          </td>
+                          <td>
+                            <p className="small">{item.quantity}</p>
+                          </td>
+                          <td>
+                            <p className="small">{item.price}</p>
                           </td>
                         </tr>
                       );

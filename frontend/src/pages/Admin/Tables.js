@@ -384,21 +384,23 @@ function Tables() {
                   <th class="border-0 rounded-start">Image</th>
                   <th class="border-0">Pack_size</th>
                   <th class="border-0">Title</th>
-                  <th class="border-0">Category</th>
+                  <th class="border-0">Brand_name</th>
                   <th class="border-0">Price</th>
-                  <th class="border-0">MRP</th>
+                  <th class="border-0">Rating</th>
                   <th class="border-0 rounded-end">Edit</th>
                 </tr>
               </thead>
               <tbody>
                 {data.length > 0 &&
                   data.map((item) => {
+                    const firstImage =
+                      item.media.length > 0 ? item.media[0] : null;
                     return (
                       <tr key={item._id}>
                         <td>
                           <img
-                            src={item.image_url}
-                            alt={item.product_title}
+                            src={firstImage.url}
+                            alt={item.name}
                             style={{ height: "50px", width: "50px" }}
                           ></img>
                         </td>
@@ -406,19 +408,16 @@ function Tables() {
                           <p className="small">{item.pack_size}</p>
                         </td>
                         <td style={{ width: "20% !important;" }}>
-                          <p className="small">{item.product_title}</p>
+                          <p className="small">{item.name}</p>
                         </td>
                         <td>
-                          <p className="small">{item.category}</p>
+                          <p className="small">{item.brand_name}</p>
                         </td>
                         <td style={{ width: "10% !important;" }}>
-                          <b style={{ color: "green" }}>
-                            {" "}
-                            ₹ {item.final_price}
-                          </b>
+                          <b style={{ color: "green" }}> ₹ {item.price}</b>
                         </td>
                         <td>
-                          <b>{item.MRP}</b>
+                          <b>{item.rating}</b>
                         </td>
                         <td>
                           <Link to={`/edit-product/${item._id}`}>
