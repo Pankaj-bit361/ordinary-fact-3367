@@ -146,7 +146,7 @@ function Header() {
                     ></path>
                   </svg>
                 </span>
-                <span class="sidebar-text">Product List</span>
+                <span class="sidebar-text">Pharma Product List</span>
               </Link>
             </li>
             <li class="nav-item active">
@@ -169,7 +169,7 @@ function Header() {
                     ></path>
                   </svg>
                 </span>
-                <span class="sidebar-text">Add Product</span>
+                <span class="sidebar-text">Add Pharma Product</span>
               </Link>
             </li>
             <li class="nav-item active">

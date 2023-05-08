@@ -3,15 +3,15 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addProduct } from "../../redux/AdminProductReducer/action";
 let initialState = {
-  image_url: "",
+  media: [],
   pack_size: "",
-  final_price: 0,
-  MRP: "",
-  category: "",
-  avg_rating: "",
-  total_ratings: "",
-  discount: "",
-  product_title: "",
+  price: 0,
+  quantity: "",
+  brand_name: "",
+  rating: "",
+  rating_count: "",
+  star_rating_percentage: "",
+  name: "",
 };
 
 const AddProduct = () => {
@@ -24,18 +24,33 @@ const AddProduct = () => {
       return {
         ...prev,
         [name]:
-          name === "final_price" || name === "MRP" || name === "avg_rating"
+          name === "price" ||
+          name === "quantity" ||
+          name === "rating" ||
+          name === "rating_count" ||
+          name === "star_rating_percentage"
             ? +value
             : value,
       };
     });
   };
+  const handleImageChange = (event) => {
+    const mediaObject = {
+      url: event.target.value,
+      _id: "6456b388b5bdcb2274a28572",
+    };
+    setProduct((prevFormData) => ({
+      ...prevFormData,
+      media: [mediaObject],
+    }));
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+
     dispatch(addProduct(product));
     console.log(initialState);
     setProduct(initialState);
-    navigate("/product-list");
+    // navigate("/product-list");
   };
   return (
     <>
@@ -48,22 +63,22 @@ const AddProduct = () => {
                 handleSubmit(e);
               }}
             >
-              <div class="row">
-                <div class="col-md-6 mb-3">
+              <div class="row m-0">
+                <div class="col-md-6 m-0">
                   <div>
-                    <label for="first_name">Product Title</label>{" "}
+                    <label for="first_name">Product Name</label>{" "}
                     <input
                       class="form-control"
-                      id="product_title"
+                      id="name"
                       type="text"
-                      name="product_title"
-                      placeholder="product_title"
+                      name="name"
+                      placeholder="product name"
                       onChange={(e) => handleChange(e)}
                       required
                     />
                   </div>
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 m-0">
                   <div>
                     <label for="last_name">Product Size</label>{" "}
                     <input
@@ -79,22 +94,18 @@ const AddProduct = () => {
                 </div>
               </div>
               <div class="row align-items-center">
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 m-0">
                   <div>
-                    <label for="last_name">Product Category</label>{" "}
-                    <select
+                    <label for="last_name">Product Brand_name</label>{" "}
+                    <input
                       class="form-control"
-                      id="product_Category"
+                      id="brand_name"
                       type="text"
-                      name="category"
-                      placeholder="product_Category"
+                      name="brand_name"
+                      placeholder="brand_name"
                       onChange={(e) => handleChange(e)}
                       required
-                    >
-                      <option value="adult">Adult</option>
-                      <option value="Child">Child</option>
-                      <option value="elderly">Elderly</option>
-                    </select>
+                    ></input>
                   </div>
                 </div>
 
@@ -103,40 +114,40 @@ const AddProduct = () => {
                     <label for="zip">Product Image</label>{" "}
                     <input
                       class="form-control"
-                      id="image_url"
+                      id="media"
                       type="text"
-                      name="image_url"
+                      name="media"
                       placeholder="Product Image URL"
-                      onChange={(e) => handleChange(e)}
+                      onChange={handleImageChange}
                       required
                     />
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 m-0">
                   <div>
                     <label for="last_name">Product Price</label>{" "}
                     <input
                       class="form-control"
-                      id="final_price"
+                      id="price"
                       type="number"
-                      name="final_price"
-                      placeholder="final_price"
+                      name="price"
+                      placeholder="price"
                       onChange={(e) => handleChange(e)}
                       required
                     />
                   </div>
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 m-0">
                   <div>
-                    <label for="last_name">Product MRP</label>{" "}
+                    <label for="last_name">Product Quantity</label>{" "}
                     <input
                       class="form-control"
-                      id="MRP"
+                      id="quantity"
                       type="text"
-                      name="MRP"
-                      placeholder="product MRP"
+                      name="quantity"
+                      placeholder="product quantity"
                       onChange={(e) => handleChange(e)}
                       required
                     />
@@ -145,30 +156,30 @@ const AddProduct = () => {
               </div>
 
               <div class="row">
-                <div class="col-sm-6 mb-3">
+                <div class="col-md-6 m-0">
                   <div class="form-group">
                     <label for="address">Discount</label>{" "}
                     <input
                       class="form-control"
-                      id="discount"
+                      id="star_rating_percentage"
                       type="text"
-                      name="discount"
-                      placeholder="Discount"
+                      name="star_rating_percentage"
+                      placeholder="star_rating_percentage"
                       onChange={(e) => handleChange(e)}
                       required
                     />
                   </div>
                 </div>
 
-                <div class="col-sm-6 mb-3">
+                <div class="col-md-6 m-0">
                   <div class="form-group">
                     <label for="city">Avarage Rating</label>{" "}
                     <input
                       class="form-control"
-                      id="avg_rating"
+                      id="rating"
                       type="text"
-                      name="avg_rating"
-                      placeholder="avg_rating"
+                      name="rating"
+                      placeholder="rating"
                       onChange={(e) => handleChange(e)}
                       required
                     />
@@ -176,15 +187,15 @@ const AddProduct = () => {
                 </div>
               </div>
               <div class="row">
-                <div class="col-sm-6 mb-3">
+                <div class="col-md-6 m-0">
                   <div class="form-group">
                     <label for="city">Total Rating</label>{" "}
                     <input
                       class="form-control"
-                      id="total_ratings"
+                      id="rating_count"
                       type="text"
-                      name="total_ratings"
-                      placeholder="total_ratings"
+                      name="rating_count"
+                      placeholder="rating_count"
                       onChange={(e) => handleChange(e)}
                       required
                     />
