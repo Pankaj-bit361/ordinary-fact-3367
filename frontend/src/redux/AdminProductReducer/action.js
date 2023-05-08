@@ -70,7 +70,7 @@ export const getSingleEditProductData = (id, newData) => (dispatch) => {
 export const addProduct = (payload) => (dispatch) => {
   dispatch(getRequestProduct());
   axios
-    .post("https://kind-jade-eagle-sari.cyclic.app/pharma/add", payload)
+    .post("https://distinct-blue-blazer.cyclic.app/pharma/add", payload)
     .then(() => {
       dispatch(postProductSuccess());
     })
