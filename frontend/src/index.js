@@ -7,9 +7,9 @@ import { BrowserRouter } from "react-router-dom";
 import { store } from "./redux/store";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import reportWebVitals from "./reportWebVitals";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/js/bootstrap.js";
-// import "bootstrap-icons/font/bootstrap-icons.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.js";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const theme = extendTheme({
