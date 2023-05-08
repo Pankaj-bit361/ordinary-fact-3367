@@ -63,7 +63,7 @@ export function Rating({ rating, numReviews }: RatingProps) {
 	);
 }
 export function ProductCard({
-	id,
+	_id,
 	name,
 	price,
 	star_rating_percentage,
@@ -75,7 +75,7 @@ export function ProductCard({
 	rating_count,
 	image_url,
 }: {
-	id: number;
+	_id: number;
 	name: string;
 	price: number;
 	src: string;
@@ -92,6 +92,7 @@ export function ProductCard({
 	const randomBolean = () => Math.random() >= 0.5;
 	const navigate = useNavigate();
 	const { url } = media[0];
+	console.log(_id,"idcheck")
 	return (
 		<Flex alignItems='center' justifyContent='center'>
 			<Box
@@ -187,7 +188,7 @@ export function ProductCard({
 						w='full'
 						mt='3'
 						colorScheme={useColorModeValue("blue", "blue")}
-						onClick={() => navigate(`/products/${id}`)}>
+						onClick={() => navigate(`/products/${_id}`)}>
 						More Details
 					</Button>
 				</Box>

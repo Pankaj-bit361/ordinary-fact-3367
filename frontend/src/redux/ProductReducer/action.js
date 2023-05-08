@@ -1,6 +1,6 @@
 import * as types from "./actionTypes";
 import axios from "axios";
-const URL = "https://obtainable-gray-tenor.glitch.me/allproducts";
+const URL = "https://distinct-blue-blazer.cyclic.app/pharma";
 export const getProduct = (params) => (dispatch) => {
 	dispatch({ type: types.GET_PRODUCT_REQUEST });
 	axios
@@ -17,7 +17,7 @@ export const getProduct = (params) => (dispatch) => {
 
 export const singleData = (id) => {
 	return axios
-		.get(`https://obtainable-gray-tenor.glitch.me/allproducts/${id}`)
+		.get(`https://distinct-blue-blazer.cyclic.app/pharma/${id}`)
 		.then((res) => res.data)
 		.catch((err) => console.log(err));
 };

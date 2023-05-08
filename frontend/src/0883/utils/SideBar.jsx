@@ -100,7 +100,7 @@ const SideBar = () => {
 
 	// console.log(order);
 	return (
-		<Box >
+		<Box boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'} borderRadius={'10px'} >
 			<Accordion
 				w='100%'
 				allowToggle
@@ -119,24 +119,24 @@ const SideBar = () => {
 						<Collapse startingHeight={80}>
 							<RadioGroup
 								defaultValue={order}
-								colorScheme={"red"}
+								colorScheme={"blue"}
 								// bg={useColorModeValue(
-								// 	"root.pink.50",
-								// 	"#f4b1b1"
+								// 	"blue",
+								// 	'lightblue'
 								// )}
 								color={useColorModeValue("blue", "black")}
 								padding={4}
 								borderRadius={4}
 								onChange={handleSort}>
-								<Stack>
+								<Stack >
 									{/* <Radio value='asc'>name: low to high</Radio>
 									<Radio value='desc'>
 										name: high to low
 									</Radio> */}
-									<Radio value='asc'>
+									<Radio value='asc' bg={'lightblue'}>
 										Price: Low to High
 									</Radio>
-									<Radio value='desc'>
+									<Radio value='desc' bg={'lightblue'}>
 										Price: High to Low
 									</Radio>
 								</Stack>
@@ -167,9 +167,11 @@ const SideBar = () => {
 									onChange={handleChangeBrand}
 									// bg={'rgb(245, 245, 245)'}
 									color={'black'}
+									// bg={'lightblue'}
 									>
 									<Checkbox
 										_dark={{ colorScheme: "green" }}
+										bg={'lightblue'}
 										colorScheme='blue'
 										value={location}
 										defaultChecked={brand.includes(
@@ -205,10 +207,11 @@ const SideBar = () => {
 									onChange={handleChange}
 									color={'black'}>
 									<Checkbox
-								
+										bg={'lightblue'}
 										_dark={{ colorScheme: "green" }}
 										colorScheme='blue'
 										// color={'black'}
+										
 										defaultChecked={category.includes(
 											location
 										)}
@@ -232,12 +235,12 @@ const SideBar = () => {
 						<Collapse startingHeight={120} in={show}>
 							{COLOR.map((location, id) => (
 								<HStack spacing={4} key={id}>
-									<Checkbox />
+									<Checkbox bg={'lightblue'} />
 									<FormLabel>{location}</FormLabel>
 								</HStack>
 							))}
 						</Collapse>
-						<Button size='sm' onClick={handleToggle} mt='1rem'>
+						<Button size='sm' onClick={handleToggle} mt='1rem' bg={'lightblue'}>
 							Show {show ? "Less" : "More"}
 						</Button>
 					</AccordionPanel>
@@ -253,7 +256,7 @@ const SideBar = () => {
 						<Collapse startingHeight={120}>
 							{FINISH.map((location, id) => (
 								<HStack spacing={4} key={id}>
-									<Checkbox />
+									<Checkbox bg={'lightblue'} />
 									<FormLabel>{location}</FormLabel>
 								</HStack>
 							))}

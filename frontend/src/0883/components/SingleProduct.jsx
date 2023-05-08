@@ -35,6 +35,7 @@ export default function SingleProduct() {
 	const dispatch = useDispatch();
 	const [quantity, setQuantity] = React.useState(1);
 	const { id } = useParams();
+	console.log(id,"38")
 	React.useEffect(() => {
 		document.title = "Product Details";
 		singleData(id).then((res) => {
