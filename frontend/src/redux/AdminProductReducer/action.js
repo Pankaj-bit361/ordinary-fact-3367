@@ -33,7 +33,7 @@ export const deleteProductSuccess = (payload) => {
 export const getProductData = (dispatch) => {
   dispatch(getRequestProduct());
   axios
-    .get(`https://kind-jade-eagle-sari.cyclic.app/productPage`)
+    .get(`https://distinct-blue-blazer.cyclic.app/pharma`)
     .then((res) => {
       dispatch(getSuccessProduct(res.data));
     })
@@ -70,7 +70,7 @@ export const getSingleEditProductData = (id, newData) => (dispatch) => {
 export const addProduct = (payload) => (dispatch) => {
   dispatch(getRequestProduct());
   axios
-    .post("https://kind-jade-eagle-sari.cyclic.app/productPage/addone", payload)
+    .post("https://kind-jade-eagle-sari.cyclic.app/pharma/add", payload)
     .then(() => {
       dispatch(postProductSuccess());
     })
@@ -81,7 +81,7 @@ export const addProduct = (payload) => (dispatch) => {
 export const deleteProductData = (id) => (dispatch) => {
   dispatch(getRequestProduct());
   axios
-    .delete(`https://kind-jade-eagle-sari.cyclic.app/productPage/delete/${id}`)
+    .delete(`https://distinct-blue-blazer.cyclic.app/pharma/delete/${id}`)
     .then((res) => {
       console.log(res.data);
     })
