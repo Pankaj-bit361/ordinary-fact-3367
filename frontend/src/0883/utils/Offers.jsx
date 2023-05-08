@@ -9,7 +9,6 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { FcApproval } from "react-icons/fc";
-
 interface CardProps {
 	heading: string;
 	description: string;
@@ -34,8 +33,9 @@ const Card = ({
 			borderWidth='1px'
 			borderRadius='lg'
 			overflow='hidden'
-			p={5}>
-			<Stack align={"start"} spacing={4}>
+			p={5}
+			color={'white'}>
+			<Stack align={"start"} spacing={4} >
 				<Box>
 					<Heading size='md' color='blue.500'>
 						{heading}
@@ -69,7 +69,8 @@ export default function Offers({ offers }) {
 					w={"full"}
 					h={16}
 					fontSize={{ base: "2xl", sm: "4xl" }}
-					fontWeight={"bold"}>
+					fontWeight={"bold"}
+					color={'white'}>
 					Offers <Icon as={FcApproval} w={10} h={10} mt='2' />
 				</Heading>
 			</Stack>

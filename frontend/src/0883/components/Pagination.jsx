@@ -37,7 +37,7 @@ const Pagination = ({ total=60 }) => {
 				<Button
 					boxShadow={"md"}
 					w='20px'
-					colorScheme={useColorModeValue("red", "red")}
+					colorScheme={useColorModeValue("blue", "red")}
 					isDisabled={page === 1}
 					onClick={() => handleClick(-1)}
 					rounded='full'>
@@ -49,7 +49,7 @@ const Pagination = ({ total=60 }) => {
 						p='2'
 						rounded='full'
 						colorScheme='red'
-						bg={page === i ? "#f4b1b1" : "gray.300"}
+						bg={page === i ? "red" : "gray.300"}
 						onClick={() => setPage(i)}
 						key={i}>
 						{i}
@@ -57,7 +57,7 @@ const Pagination = ({ total=60 }) => {
 				))}
 				<Button
 					rounded='100%'
-					colorScheme={useColorModeValue("red", "red")}
+					colorScheme={useColorModeValue("blue", "red")}
 					w='20px'
 					isDisabled={page == totleButtons}
 					onClick={() => handleClick(1)}>

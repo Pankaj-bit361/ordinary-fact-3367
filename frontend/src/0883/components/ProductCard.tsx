@@ -186,7 +186,7 @@ export function ProductCard({
 					<Button
 						w='full'
 						mt='3'
-						colorScheme={useColorModeValue("red", "red")}
+						colorScheme={useColorModeValue("blue", "blue")}
 						onClick={() => navigate(`/products/${id}`)}>
 						More Details
 					</Button>

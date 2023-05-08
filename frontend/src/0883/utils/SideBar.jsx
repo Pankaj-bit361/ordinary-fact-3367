@@ -100,17 +100,17 @@ const SideBar = () => {
 
 	// console.log(order);
 	return (
-		<>
+		<Box >
 			<Accordion
 				w='100%'
 				allowToggle
 				defaultIndex={[0]}
 				bg='root.white'
 				_dark={{ bg: "root.white" }}
-				mb={4}>
+				mb={2}>
 				<AccordionItem mb={4}>
 					<AccordionButton>
-						<Box as='span' flex='1' textAlign='left'>
+						<Box as='span' flex='1' textAlign='left' color={'black'}>
 							Sort By
 						</Box>
 						<AccordionIcon />
@@ -120,11 +120,11 @@ const SideBar = () => {
 							<RadioGroup
 								defaultValue={order}
 								colorScheme={"red"}
-								bg={useColorModeValue(
-									"root.pink.50",
-									"#f4b1b1"
-								)}
-								color={useColorModeValue("black", "black")}
+								// bg={useColorModeValue(
+								// 	"root.pink.50",
+								// 	"#f4b1b1"
+								// )}
+								color={useColorModeValue("blue", "black")}
 								padding={4}
 								borderRadius={4}
 								onChange={handleSort}>
@@ -146,14 +146,14 @@ const SideBar = () => {
 				</AccordionItem>
 			</Accordion>
 			<Accordion
-				bg={useColorModeValue("root.white", "root.white")}
+				bg={useColorModeValue("root.black", "root.white")}
 				allowToggle
 				defaultIndex={[0]}
 				// border='1px solid red'
 			>
-				<AccordionItem mb={4}>
+				<AccordionItem mb={4} >
 					<AccordionButton>
-						<Box as='span' flex='1' textAlign='left'>
+						<Box as='span' flex='1' textAlign='left' color={'black'} >
 							BRAND
 						</Box>
 						<AccordionIcon />
@@ -164,10 +164,13 @@ const SideBar = () => {
 								<HStack
 									spacing={4}
 									key={id}
-									onChange={handleChangeBrand}>
+									onChange={handleChangeBrand}
+									// bg={'rgb(245, 245, 245)'}
+									color={'black'}
+									>
 									<Checkbox
 										_dark={{ colorScheme: "green" }}
-										colorScheme='red'
+										colorScheme='blue'
 										value={location}
 										defaultChecked={brand.includes(
 											location
@@ -181,14 +184,14 @@ const SideBar = () => {
 							w='100%'
 							onClick={handleToggle}
 							mt='1rem'
-							colorScheme='red'>
+							colorScheme='blue'>
 							Show {show ? "Less" : "More"}
 						</Button>
 					</AccordionPanel>
 				</AccordionItem>
 				<AccordionItem mb={4}>
 					<AccordionButton>
-						<Box as='span' flex='1' textAlign='left'>
+						<Box as='span' flex='1' textAlign='left' color={'black'}>
 							CATEGORY
 						</Box>
 						<AccordionIcon />
@@ -199,10 +202,13 @@ const SideBar = () => {
 								<HStack
 									spacing={4}
 									key={id}
-									onChange={handleChange}>
+									onChange={handleChange}
+									color={'black'}>
 									<Checkbox
+								
 										_dark={{ colorScheme: "green" }}
-										colorScheme='red'
+										colorScheme='blue'
+										// color={'black'}
 										defaultChecked={category.includes(
 											location
 										)}
@@ -255,7 +261,7 @@ const SideBar = () => {
 					</AccordionPanel>
 				</AccordionItem>
 			</Accordion>
-		</>
+		</Box>
 	);
 };
 

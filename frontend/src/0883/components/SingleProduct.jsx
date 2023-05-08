@@ -61,7 +61,8 @@ export default function SingleProduct() {
 				// border='1px solid red'
 				boxShadow={"xl"}
 				mt='8'
-				// bg={useColorModeValue("root.pink.50", "gray.800")}
+				color={'black'}
+				bg={useColorModeValue("root.pink.50", "gray.800")}
 			>
 				<SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
 					<Flex flexDirection='column' alignItems='center'>
@@ -196,7 +197,7 @@ export default function SingleProduct() {
 									alignItems='center'>
 									<Button
 										isDisabled={quantity === 1}
-										colorScheme={"red"}
+										colorScheme={"blue"}
 										onClick={() =>
 											setQuantity(quantity - 1)
 										}>
@@ -204,7 +205,7 @@ export default function SingleProduct() {
 									</Button>
 									<Text mx='3'>{quantity}</Text>
 									<Button
-										colorScheme={"green"}
+										colorScheme={"blue"}
 										onClick={() =>
 											setQuantity(quantity + 1)
 										}>
@@ -223,7 +224,7 @@ export default function SingleProduct() {
 								color={"gray.800"}
 								fontSize={"1em"}>
 								<Button
-									colorScheme='green'
+									colorScheme='blue'
 									ml='4'
 									w='100%'
 									onClick={handleCart}
@@ -235,7 +236,7 @@ export default function SingleProduct() {
 					</Stack>
 				</SimpleGrid>
 			</Container>
-			<Offers offers={data?.offers} />
+			<Offers offers={data?.offers}/>
 		</>
 	);
 }
