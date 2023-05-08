@@ -10,12 +10,16 @@ import OrderList from "./Admin/OrderList";
 import Cart from "./Cart";
 import Category from "./Category";
 import SingleProduct from "../0883/components/SingleProduct";
+import { Login } from "./Login";
+import Signup from "./Signup";
 
 const MainRoute = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<Signup/>}/>
         <Route path="/admin" element={<DashboardMain />} />
         <Route path="/product-list" element={<ProductList />} />
         <Route path="/cart" element={<Cart/>}></Route>

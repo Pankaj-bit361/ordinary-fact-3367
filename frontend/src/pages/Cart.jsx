@@ -41,7 +41,7 @@ console.log(data)
   return (
     <DIV>
     <Box bg={"#faf9f8"}>
-    <Box w="80%" m="auto" mt="5%" >
+    <Box w="80%" m="auto"  >
     <Box fontSize={"2.2rem"} fontWeight={"700"} >Shopping Bag</Box>
     <Grid mt="4%" templateColumns="repeat(11,1fr)" gap={"4%"} >
 <Box className='box1'  bg="white" gridColumnStart={1} gridColumnEnd={8} >
@@ -82,7 +82,7 @@ console.log(data)
     <Text fontWeight={"600"} fontSize={"1.1vw"}>Color:</Text>
     <Text fontWeight={"600"} fontSize={"1.1vw"}>{item.color}</Text>
 </Flex>
-<Button fontWeight={"600"}  mt="20%" w="60%" bg="blackAlpha.900"  color={"white"} >Remove</Button>
+<Button fontWeight={"600"}  mt="20%" w="60%" bg="#2e3192"  color={"white"} >Remove</Button>
 
 {/* bg={item.color==="white"?"black":item.color} */}
         </Box>
@@ -111,7 +111,7 @@ console.log(data)
 <Text fontWeight={"700"} >Total</Text>
 <Text fontWeight={"700"}>FREE </Text>
 </Flex>
-<Button mt="5%" w="100%" bg="blackAlpha.900" color="white">Continue to Checkout</Button>
+<Button mt="5%" w="100%" bg="#2e3192" color="white">Continue to Checkout</Button>
 <Flex mt="5%" justifyContent={'space-around'}>
     <Text mt="1%" fontWeight={600} fontSize={"1.1vw"}>Cash on Delivery</Text>
     <Image w="10%"  src={"https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-mastercard-logo-png-vector-download-19.png"}/>
