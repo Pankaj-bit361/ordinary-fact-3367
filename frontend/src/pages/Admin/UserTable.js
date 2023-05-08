@@ -367,7 +367,7 @@ function UserTable() {
                 <tr>
                   <th class="border-0 rounded-start">Name</th>
                   <th class="border-0">Email</th>
-                  <th class="border-0 rounded-end">Mobile</th>
+                  <th class="border-0 rounded-end">Age</th>
                 </tr>
               </thead>
               <tbody>
@@ -382,7 +382,7 @@ function UserTable() {
                           <p className="small">{item.email}</p>
                         </td>
                         <td>
-                          <p className="small">{item.mobile_no}</p>
+                          <p className="small">{item.age}</p>
                         </td>
                       </tr>
                     );

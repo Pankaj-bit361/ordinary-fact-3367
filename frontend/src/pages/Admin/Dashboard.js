@@ -9,7 +9,7 @@ function Dashboard() {
   const [orderCount, setOrderCount] = useState(0);
   function getUserCount() {
     axios
-      .get(`https://kind-jade-eagle-sari.cyclic.app/auth`)
+      .get(`https://distinct-blue-blazer.cyclic.app/users`)
       .then((response) => {
         setUserCount(response.data);
       })
@@ -19,7 +19,7 @@ function Dashboard() {
   }
   function getProductCount() {
     axios
-      .get(`https://kind-jade-eagle-sari.cyclic.app/productPage`)
+      .get(`https://distinct-blue-blazer.cyclic.app/pharma`)
       .then((response) => {
         setProductCount(response.data);
       })
@@ -29,7 +29,7 @@ function Dashboard() {
   }
   function getOrderCount() {
     axios
-      .get(`https://kind-jade-eagle-sari.cyclic.app/orders`)
+      .get(`https://distinct-blue-blazer.cyclic.app/order`)
       .then((response) => {
         setOrderCount(response.data);
       })
@@ -471,13 +471,13 @@ function Dashboard() {
                       </svg>
                     </div>
                     <div class="d-sm-none">
-                      <h2 class="fw-extrabold h5">Total Products</h2>
+                      <h2 class="fw-extrabold h5">Pharma Products</h2>
                       <h3 class="mb-1">{productCount.length}</h3>
                     </div>
                   </div>
                   <div class="col-12 col-xl-7 px-xl-0">
                     <div class="d-none d-sm-block">
-                      <h2 class="h5">Total Products</h2>
+                      <h2 class="h5">Pharma Products</h2>
                       <h3 class="fw-extrabold mb-1">{productCount.length}</h3>
                     </div>
                     <small class="d-flex align-items-center">
