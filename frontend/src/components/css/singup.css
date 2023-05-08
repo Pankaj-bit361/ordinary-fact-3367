@@ -24,7 +24,9 @@ form :nth-child(1){
     Roboto, Arial, sans-serif;
    
 }
-
+/* #fixbutton{
+    color:red
+} */
 /* #form button{
    background-color:#0076be;
    color:white;
@@ -48,12 +50,12 @@ form :nth-child(1){
 }
 
 #span :nth-child(1){
-    color:#2e3192;
+    color:#00a699;
     font-size:small;
    
 }
 #span :nth-child(3){
-    color:#2e3192
+    color:#00a699
 }
 
 ::placeholder{
@@ -63,13 +65,12 @@ form :nth-child(1){
    font-size: small;
 }
 #form :nth-child(6){
-    background-color:#2e3192;
+    background-color:#00a699;
     color:white;
-    width:75% ;
+    width:100% ;
+    margin: auto;
     height: 47px;
     font-size: 18px;
-    line-height: normal; 
-   
    border:none;
     border-radius: 3%;
 }
@@ -79,8 +80,17 @@ form :nth-child(1){
     margin: auto;
 margin-top: 2%;
 }
+
+#main :nth-child(3) :nth-child(1){
+    /* margin-left: 40%; */
+}
+#all{
+
+    margin-left: 40%;
+}
   #main :nth-child(3) :nth-child(2){
-color:#2e3192;
+color:#00a699;
+
   }
  #hr{
     color:red;
@@ -98,3 +108,8 @@ color:#2e3192;
       }
      
      
+      @media only screen and (max-width: 800px) {
+        #form {
+            width:80%;
+        }
+      }

@@ -24,39 +24,48 @@ const [change2,setchange2]=useState(true)
 ///
 const navigate=useNavigate()
 const [data,setdata]=useState([])
-const[checkemail,setcheckemail]=useState("")
-const[checkpss,setcheckpss]=useState("")
-useEffect(() => {
+const[email,setcheckemail]=useState("")
+const[pass,setcheckpss]=useState("")
+// useEffect(() => {
   
-axios.get(`https://63f87b1f5b0e4a127de6dd05.mockapi.io/survey/users`)
-.then((res)=>setdata(res.data))
+// axios.get(`https://63f87b1f5b0e4a127de6dd05.mockapi.io/survey/users`)
+// .then((res)=>setdata(res.data))
  
-}, [])
+// }, [])
 
 
-const onsubmit=async()=>{
-  
-  data.map((item)=>{
-if(checkemail==="admin123@gmail.com" && checkpss==="admin"){
-  navigate("/Admin")
+const onsubmit=async(e)=>{
+let data={
+email,pass
+
 }
 
-
-else if    (item.Email===checkemail && item.Password===checkpss){
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Login Success',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      navigate("/")
-    }
-  
-
-  })
+    e.preventDefault()
+    console.log(data)
+    axios.post(`https://distinct-blue-blazer.cyclic.app/users/login`,data)
+    .then((res)=>{
+        console.log(res.data)
+        localStorage.setItem("token",JSON.stringify(res.data.token))
+        if(res.data.token){
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Login Success',
+                showConfirmButton: false,
+                timer: 1000
+              })
+              navigate("/")
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "Wrong email or password",
+               timer:0
+              })
+        }
+    })
 }
-console.log(data)
+
 // const clicked=()=>{
 //   navigate("/admin")
 // }
@@ -135,19 +144,19 @@ function onOtpVerify(){
  
     <div>
    
-<Button mt={"2%"} color="white" bg={"#2e3192"} onClick={()=>setchnage(!change)}>{change?"Sign in using Number":"Sign in using Email"}</Button>
+<Button mt={"2%"} color="white" bg={"#00a699"} onClick={()=>setchnage(!change)}>{change?"Sign in using Number":"Sign in using Email"}</Button>
 
 {change?<Box pt={"5%"} w={"50%"} m="auto" >
 <Text fontSize={"xl"} textAlign="left">My Account</Text>
-<Input mt={"3%"} placeholder="Email" value={checkemail} onChange={(e)=>setcheckemail(e.target.value)}/>
-<Input mt={"3%"} placeholder="Password" value={checkpss} onChange={(e)=>setcheckpss(e.target.value)}  />
-<Button onClick={onsubmit} mt={"3%"} color="white" bg={"#2e3192"} w={"100%"}>Sign In</Button>
+<Input mt={"3%"} placeholder="Email" value={email} onChange={(e)=>setcheckemail(e.target.value)}/>
+<Input mt={"3%"} placeholder="Password" value={pass} onChange={(e)=>setcheckpss(e.target.value)}  />
+<Button onClick={onsubmit} mt={"3%"} color="white" bg={"#00a699"} w={"100%"}>Sign In</Button>
 </Box>:<Box> 
 <Toaster  toastOptions={{duration:1000}}/>
  <Box id="recaptcha-container" > </Box>
     
    {change2? <Box w={"50%"}  margin="auto">  <Input w={"100%"} mt={"3%"} type="number" placeholder='Enter Mobile Number' value={ph} onChange={(e)=>setph(e.target.value)} />
-      <Button   color="white" bg={"#2e3192"} w={"100%"} mt={"3%"} onClick={onSingup}>Send otp</Button> </Box>:
+      <Button   color="white" bg={"#00a699"} w={"100%"} mt={"3%"} onClick={onSingup}>Send otp</Button> </Box>:
       <Box style={{width:"50%",margin:"auto",marginTop:"5%"}} >
       <div style={{width:"100%",margin:"auto", marginLeft:"2%"}} >
 
@@ -163,7 +172,7 @@ function onOtpVerify(){
                     ></OtpInput>
       </div>
 
-       <Button w={"100%"}  color="white" bg={"#2e3192"} onClick={onOtpVerify}>Verify</Button>
+       <Button w={"100%"}  color="white" bg={"#00a699"} onClick={onOtpVerify}>Verify</Button>
        </Box>
        }
   
@@ -171,10 +180,10 @@ function onOtpVerify(){
       </Box>
       }
 <Text fontSize={"14px"} m="auto" w={"50%"} mt={"2%"}>By signing into your account,you agree</Text>
-<Text fontSize={"14px"} m='auto' w={"50%"}><span>to Belks's </span><span style={{color:"#2e3192"}}>Privacy Policy </span><span> & </span> <span style={{color:"#2e3192"}}> Terms of Use</span></Text>
+<Text fontSize={"14px"} m='auto' w={"50%"}><span>to Belks's </span><span style={{color:"#00a699"}}>Privacy Policy </span><span> & </span> <span style={{color:"#2e3192"}}> Terms of Use</span></Text>
     <hr style={{width:"50%"}}/>
     <Link to="/signup"> <Box  mt={"2%"}>
-  <Button   bg={"#721f1f"} background={"white"} border={"1px solid #2e3192"} w={"50%"} m="auto" color={"#2e3192"}>Create Account</Button></Box></Link>
+  <Button   bg={"##00a699"} background={"white"} border={"1px solid #2e3192"} w={"50%"} m="auto" color={"#00a699"}>Create Account</Button></Box></Link>
     </div>
 
 </>

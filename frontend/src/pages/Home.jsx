@@ -14,6 +14,7 @@ import {
   SimpleGrid,
   Text,
   Center,
+  Stack,
 } from "@chakra-ui/react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
@@ -49,7 +50,7 @@ const Home = () => {
     return () => {
       window.removeEventListener("resize", detectSize);
     };
-  }, [windowDimension]);
+  }, [windowDimension])
 
   console.log(windowDimension.winWidth);
 
@@ -3333,7 +3334,8 @@ const Home = () => {
           </SimpleGrid>
         </Box>
       )}
-
+      
+        
  
     </Box>
   );

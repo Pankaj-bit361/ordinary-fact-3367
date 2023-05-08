@@ -18,12 +18,10 @@ import { logintry } from "../redux/auth/action";
 import LargeWithAppLinksAndSocial from "../components/Footer";
 
 const init={
-  FirstName:"",
-LastName:"",
-Email:"",
-Password:"",
-ConfirmPassword:"",
-Number:""
+  name:"",
+email:"",
+pass:"",
+age:"",
 }
 
 export const Signup = () => {
@@ -65,15 +63,14 @@ dispatch(logintry(adddetails))
        
         <div >
         <h4>Personal information</h4>
-        <Input type="text" placeholder='First Name' name="FirstName" onChange={handleChange} value={adddetails.FirstName}/>
+        <Input type="text" placeholder='Enter Your Name' name="name" onChange={handleChange} value={adddetails.name}/>
         <br/>
-        <Input type="text" placeholder='Last Name' name="LastName" onChange={handleChange} value={adddetails.LastName}  />
+        <Input type="text" placeholder='Enter Your Age' name="age" onChange={handleChange} value={adddetails.age}  />
         </div>
   <div>
   <h4>Contact Information</h4>
-  <Input type="number" placeholder="Phone Number" name="Number" onChange={handleChange} value={adddetails.Number} />
   <br/>
-  <Input type="text" placeholder='Email' onChange={handleChange} name="Email" value={adddetails.Email} />
+  <Input type="text" placeholder='Email' onChange={handleChange} name="email" value={adddetails.email} />
   </div>
      
        <div id="maintain">
@@ -82,7 +79,7 @@ dispatch(logintry(adddetails))
       
 
         <InputGroup mb={"-5%"}  className='ghost' >
-                <Input   type={showPassword ? 'text' : 'password'} placeholder="Password" name="Password" value={adddetails.Password} onChange={handleChange} />
+                <Input   type={showPassword ? 'text' : 'password'} placeholder="Password" name="pass" value={adddetails.pass} onChange={handleChange} />
                 <InputRightElement  >
                   <div 
                    
@@ -98,27 +95,12 @@ dispatch(logintry(adddetails))
         
               
             
-        <InputGroup  mb={"-2%"}  className='ghost'>
-                <Input  type={showPassword ? 'text' : 'password'} placeholder="Confirm Password" name="ConfirmPassword" onChange={handleChange} value={adddetails.ConfirmPassword} />
-                <InputRightElement  >
-                  <div
-                   
-                  style={{color:"black"}}
-                    variant={'ghost'}
-                   
-                    onClick={() =>
-                  
-                      setShowPassword((showPassword) => !showPassword)
-                    }>
-                    {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-                  </div>
-                </InputRightElement>
-              </InputGroup>
+     
           
           
               </div>
        <br/>
-       <Button  type='submit' >Create Account</Button>
+       <button id="fixbutton"  type='submit' >Create Account</button>
        <Box >By Placing your order, you agree to Belk's</Box>
        <Box id="span">
         <span >Priavacy Policy </span>
@@ -127,7 +109,7 @@ dispatch(logintry(adddetails))
        </Box>
       </form>
       <hr className="hr"/>
-   <div><span>Already have account? </span> <Link><span >Sign In</span></Link> </div>
+   <div id="all"><span>Already have account? </span> <Link><span >Sign In</span></Link> </div>
     </div>
     
     </>

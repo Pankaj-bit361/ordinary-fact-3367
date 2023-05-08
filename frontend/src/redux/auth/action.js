@@ -19,7 +19,7 @@ export const getloginsucces=(payload)=>{
 
 export const logintry=(ob)=>async(dispatch)=>{
     dispatch(loginrequest)
-    return axios.post(`https://63f87b1f5b0e4a127de6dd05.mockapi.io/survey/users`,ob)
+    return axios.post(`https://distinct-blue-blazer.cyclic.app/users/register`,ob)
     .then((res)=>{
         dispatch(postloginsuccess(ob))
     })

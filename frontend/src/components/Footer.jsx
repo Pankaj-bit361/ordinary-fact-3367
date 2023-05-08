@@ -22,7 +22,7 @@ const Footer = () => {
       
       console.log(windowDimension.winWidth)
   return (
-    <Box p="2%" mt={["5%","5%","3%"]} bg="#2e3192" color="white">
+    <Box p="2%" mt={["5%","5%","3%"]} bg="#00a699" color="white">
 
  {windowDimension.winWidth>1000? <Box >
         <Grid gridTemplateColumns={"repeat(2,1fr)"}>
@@ -35,7 +35,7 @@ const Footer = () => {
 <Box gridColumnStart={1} mt="5%" gridColumnEnd={3}>Go Mobile:</Box>
     <Box gridColumnStart={3} mt="5%" gridColumnEnd={4}  w="100%"><Image w="35%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/488px-Apple_logo_black.svg.png?20220821121934"/></Box>
     <Box gridColumnStart={4} mt="8%" gridColumnEnd={5} w="100%"><Image w="35%" src="https://cdn-icons-png.flaticon.com/512/38/38002.png"/></Box>
-    <Box gridColumnStart={5} mt="8%" gridColumnEnd={6} w="100%"><Image w="35%" src="https://w7.pngwing.com/pngs/78/447/png-transparent-iphone-logo-show-smartphone-android-cell-phone-gadget-electronics-rectangle-thumbnail.png"/></Box>
+    <Box gridColumnStart={5} mt="8%" gridColumnEnd={6} w="100%"><Image w="35%" src="https://static.vecteezy.com/system/resources/previews/011/047/536/original/smartphone-and-mobile-phone-free-png.png"/></Box>
 <Box gridColumnStart={6} mt="5%" gridColumnEnd={8}>Follow us on:</Box>
 <Box gridColumnStart={8} mt="8%" gridColumnEnd={9} w="100%"><Image w="35%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/600px-Facebook_Logo_%282019%29.png"/></Box>
     <Box gridColumnStart={9} mt="8%" gridColumnEnd={10} w="100%"><Image w="35%" src="https://www.wellybox.com/wp-content/uploads/2023/02/pngkey.com-twitter-logo-png-transparent-27646.png"/></Box>
@@ -50,7 +50,7 @@ const Footer = () => {
 
 
 
-    <Box   mt={["5%","5%","3%"]} bg="#2e3192" >
+    <Box   mt={["5%","5%","3%"]} bg="#00a699" >
     <SimpleGrid columns={[2,2,4]} m="auto" w="80%" gap="2%" textAlign={"left"}>
         <Box  id="box1">
 
