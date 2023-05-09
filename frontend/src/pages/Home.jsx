@@ -33,6 +33,8 @@ import city8 from "../Images/city8.jpg";
 import city9 from "../Images/city9.jpg";
 import city10 from "../Images/city10.jpg";
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import Mobnav from "../components/Mobnav";
 
 const Home = () => {
   const [windowDimension, detectHW] = useState({
@@ -56,6 +58,7 @@ const Home = () => {
 
   return (
     <Box>
+    {windowDimension.winWidth>767?<Navbar/>:<Mobnav/>}
       <Box w="100%">
         {/* <Image src="https://i.ibb.co/4JS6wws/homepage-banner1.jpg" /> */}
         <Box></Box>
@@ -3335,7 +3338,7 @@ const Home = () => {
         </Box>
       )}
       
-        
+        <Footer/>
  
     </Box>
   );

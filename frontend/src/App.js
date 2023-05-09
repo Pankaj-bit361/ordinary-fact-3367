@@ -28,12 +28,11 @@ function App() {
 
 
   return <div>
-{windowDimension.winWidth>767?<Navbar/>:<Mobnav/>}
+{/* {windowDimension.winWidth>767?<Navbar/>:<Mobnav/>} */}
 
   
 
 <MainRoute />
-<Footer/>
   </div>;
 }
 

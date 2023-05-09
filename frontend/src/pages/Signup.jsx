@@ -16,6 +16,9 @@ import "../components/css/singup.css";
 import { useDispatch } from "react-redux";
 import { logintry } from "../redux/auth/action";
 import LargeWithAppLinksAndSocial from "../components/Footer";
+import Navbar from "../components/Navbar";
+import Mobnav from "../components/Mobnav";
+import Footer from "../components/Footer";
 
 const init={
   name:"",
@@ -140,6 +143,7 @@ color="#00a699"
 
 
 <>
+{windowDimension.winWidth>767?<Navbar/>:<Mobnav/>}
 <div id="main">
  <form id="form" disabled={adddetails.Password!==adddetails.ConfirmPassword} onSubmit={handleSubmit}>
     <div >
@@ -189,7 +193,7 @@ color="#00a699"
  <hr className="hr"/>
     <div id="all"><span>Already have account? </span> <Link to="/login"><span  style={{color:color}}>Sign In</span></Link> </div>
 </div>
-
+<Footer/>
 </>
 
   );

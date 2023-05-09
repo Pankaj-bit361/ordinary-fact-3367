@@ -20,6 +20,9 @@ import Swal from "sweetalert2";
 import { async } from "@firebase/util";
 
 import LargeWithAppLinksAndSocial from "../components/Footer";
+import Navbar from "../components/Navbar";
+import Mobnav from "../components/Mobnav";
+import Footer from "../components/Footer";
 export const Login = () => {
 
 
@@ -203,7 +206,8 @@ function onCatchVerify(){
   }
 
   return (
-    <>
+    <Box>
+    {windowDimension.winWidth>767?<Navbar/>:<Mobnav/>}
       <div className="text-center">
         {change ? (
           <Box pt={"5%"} w={"50%"} m="auto">
@@ -331,6 +335,7 @@ function onCatchVerify(){
           </Box>
         </Link>
       </div>
-    </>
+      <Footer/>
+    </Box>
   );
 };

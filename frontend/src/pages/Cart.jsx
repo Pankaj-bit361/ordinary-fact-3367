@@ -7,8 +7,32 @@ import { AiOutlineHeart } from 'react-icons/ai'
 import styled from 'styled-components';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import Navbar from '../components/Navbar'
+import Mobnav from '../components/Mobnav'
+import Footer from '../components/Footer'
 const Cart = () => {
     const [state,setState] = useState([])
+
+
+    const [windowDimension, detectHW] = useState({
+        winWidth: window.innerWidth,
+      });
+    
+      const detectSize = () => {
+        detectHW({
+          winWidth: window.innerWidth,
+        });
+      };
+      useEffect(() => {
+        window.addEventListener("resize", detectSize);
+    
+        return () => {
+          window.removeEventListener("resize", detectSize);
+        };
+      }, [windowDimension])
+    
+      console.log(windowDimension.winWidth);
+    
 
 const [count,setcount]=useState(0)
 const dispatch=useDispatch()
@@ -51,6 +75,7 @@ const postandeleteall=()=>{
 
   return (
     <DIV>
+    {windowDimension.winWidth>767?<Navbar/>:<Mobnav/>}
     <Box bg={"#faf9f8"}>
     <Box w="80%" m="auto"  >
     <Box fontSize={"2.2rem"} fontWeight={"700"} >Shopping Bag</Box>
@@ -138,6 +163,7 @@ const postandeleteall=()=>{
    
     </Box>
     </Box>
+    <Footer/>
     </DIV>
   )
 }

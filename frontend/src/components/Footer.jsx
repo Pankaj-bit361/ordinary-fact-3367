@@ -1,5 +1,7 @@
 import { Box, Divider, Flex, Grid, Image, SimpleGrid, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
+import Navbar from './Navbar'
+import Mobnav from './Mobnav'
 
 const Footer = () => {
 
@@ -26,6 +28,8 @@ if(windowDimension.winWidth>767?color="#2f3394":color="#00a699")
 
 
   return (
+    <Box>
+    
     <Box p="2%" mt={["5%","5%","3%"]} bg={color} color="white">
 
  {windowDimension.winWidth>1000? <Box >
@@ -100,6 +104,8 @@ if(windowDimension.winWidth>767?color="#2f3394":color="#00a699")
         </Box>
     </SimpleGrid>
     </Box>
+    </Box>
+
     </Box>
   )
 }

@@ -17,6 +17,9 @@ import Swal from 'sweetalert2';
 import { useDispatch } from 'react-redux';
 import { getCartProducts } from '../redux/Cart/action';
 import { useNavigate } from 'react-router-dom';
+import Footer from './Footer';
+import Navbar from './Navbar';
+import Mobnav from './Mobnav';
 //   import { TbDiscount2 } from 'react-icons/tb'; 
 // import { AiOutlineRight } from 'react-icons/ai'; 
 
@@ -28,6 +31,27 @@ const PaymentPage = () => {
   let token=JSON.parse(localStorage.getItem("token"))
   const [data,setdata]=useState([])
   const dispatch=useDispatch()
+
+
+  const [windowDimension, detectHW] = useState({
+    winWidth: window.innerWidth,
+  });
+
+  const detectSize = () => {
+    detectHW({
+      winWidth: window.innerWidth,
+    });
+  };
+  useEffect(() => {
+    window.addEventListener("resize", detectSize);
+
+    return () => {
+      window.removeEventListener("resize", detectSize);
+    };
+  }, [windowDimension])
+
+  console.log(windowDimension.winWidth);
+
 
 useEffect(()=>{
   axios.get(`https://distinct-blue-blazer.cyclic.app/cart`,{
@@ -77,8 +101,9 @@ const deleteandadd=()=>{
 }
 console.log(priceji,"total")
   return ( 
-   
   
+    <Box>
+  {windowDimension.winWidth>767?<Navbar/>:<Mobnav/>}
     <Box 
     w={'90%'} 
     boxShadow="md" 
@@ -156,8 +181,8 @@ as='bold' color='white' bg='#00ACC1' _hover={{bg:"#0097A7"}}>
             </Box> 
 
 </Box>
-      
-
+      <Footer/>
+</Box>
   ) 
 } 
  
