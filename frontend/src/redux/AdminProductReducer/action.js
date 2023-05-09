@@ -44,7 +44,7 @@ export const getProductData = (dispatch) => {
 export const getSingleProductData = (id) => (dispatch) => {
   dispatch(getRequestProduct());
   axios
-    .get(`https://kind-jade-eagle-sari.cyclic.app/productPage/${id}`)
+    .get(`https://distinct-blue-blazer.cyclic.app/pharma/${id}`)
     .then((res) => {
       dispatch(getSuccessSingleProduct(res.data));
     })
@@ -56,7 +56,7 @@ export const getSingleEditProductData = (id, newData) => (dispatch) => {
   dispatch(getRequestProduct());
   axios
     .patch(
-      `https://kind-jade-eagle-sari.cyclic.app/productPage/update/${id}`,
+      `https://distinct-blue-blazer.cyclic.app/pharma/update/${id}`,
       newData
     )
     .then(() => {

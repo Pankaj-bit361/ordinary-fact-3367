@@ -10,7 +10,7 @@ const AddProduct = () => {
   const { id } = useParams();
   const EditData = useSelector((store) => store.adminProductReducer.products);
   const [editTitle, setEditTitle] = useState("");
-  const [editImage_url, setEditImage_url] = useState("");
+  const [editImage_url, setEditImage_url] = useState([]);
   const [editPack_size, setEditPack_size] = useState("");
   const [editFinal_price, setEditFinal_price] = useState("");
   const [editMRP, setEditMRP] = useState("");
@@ -20,32 +20,42 @@ const AddProduct = () => {
   const [editDiscount, setEditDiscount] = useState("");
   useEffect(() => {
     const productData = EditData.find((el) => el._id === id);
-    (productData && setEditTitle(productData.product_title)) ||
-      setEditImage_url(productData.image_url) ||
+    (productData && setEditTitle(productData.name)) ||
+      setEditImage_url(productData.media[0].url) ||
       setEditPack_size(productData.pack_size) ||
-      setEditFinal_price(productData.final_price) ||
-      setEditMRP(productData.MRP) ||
-      setEditCategory(productData.category) ||
-      setEditAvg_rating(productData.avg_rating) ||
-      setEditTotal_ratings(productData.total_ratings) ||
-      setEditDiscount(productData.discount);
+      setEditFinal_price(productData.price) ||
+      setEditMRP(productData.quantity) ||
+      setEditCategory(productData.brand_name) ||
+      setEditAvg_rating(productData.rating) ||
+      setEditTotal_ratings(productData.rating_count) ||
+      setEditDiscount(productData.star_rating_percentage);
   }, []);
 
-  console.log("editproduct", editTitle);
+  console.log("editproduct", editImage_url);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const handleImageChange = (event) => {
+    const mediaObject = {
+      url: event.target.value,
+      _id: "6456b388b5bdcb2274a28572",
+    };
+    setEditImage_url((prevFormData) => ({
+      ...prevFormData,
+      media: [mediaObject],
+    }));
+  };
   const handleEditSubmit = (e) => {
     e.preventDefault();
     const newData = {
-      product_title: editTitle,
-      image_url: editImage_url,
+      name: editTitle,
+      media: editImage_url,
       pack_size: editPack_size,
-      final_price: editFinal_price,
-      MRP: editMRP,
-      category: editCategory,
-      avg_rating: editAvg_rating,
-      total_ratings: editTotal_ratings,
-      discount: editDiscount,
+      price: editFinal_price,
+      quantity: editMRP,
+      brand_name: editCategory,
+      rating: editAvg_rating,
+      rating_count: editTotal_ratings,
+      star_rating_percentage: editDiscount,
     };
     console.log("newData", newData);
     dispatch(getSingleEditProductData(id, newData));
@@ -63,23 +73,23 @@ const AddProduct = () => {
                 handleEditSubmit(e);
               }}
             >
-              <div class="row">
-                <div class="col-md-6 mb-3">
+              <div class="row m-0">
+                <div class="col-md-6 m-0">
                   <div>
-                    <label for="first_name">Product Title</label>{" "}
+                    <label for="first_name">Product Name</label>{" "}
                     <input
                       class="form-control"
                       id="product_title"
                       type="text"
-                      name="product_title"
-                      placeholder="product_title"
+                      name="name"
+                      placeholder="product_name"
                       value={editTitle}
                       onChange={(e) => setEditTitle(e.target.value)}
                       required
                     />
                   </div>
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 m-0">
                   <div>
                     <label for="last_name">Product Size</label>{" "}
                     <input
@@ -96,23 +106,19 @@ const AddProduct = () => {
                 </div>
               </div>
               <div class="row align-items-center">
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 m-0">
                   <div>
-                    <label for="last_name">Product Category</label>{" "}
-                    <select
+                    <label for="last_name">Product Brand_name</label>{" "}
+                    <input
                       class="form-control"
-                      id="product_Category"
+                      id="brand_name"
                       type="text"
-                      name="category"
-                      placeholder="product_Category"
+                      name="brand_name"
+                      placeholder="brand_name"
                       value={editCategory}
                       onChange={(e) => setEditCategory(e.target.value)}
                       required
-                    >
-                      <option value="adult">Adult</option>
-                      <option value="Child">Child</option>
-                      <option value="elderly">Elderly</option>
-                    </select>
+                    ></input>
                   </div>
                 </div>
 
@@ -123,24 +129,25 @@ const AddProduct = () => {
                       class="form-control"
                       id="image_url"
                       type="text"
-                      name="image_url"
+                      name="media"
                       placeholder="Product Image URL"
                       value={editImage_url}
-                      onChange={(e) => setEditImage_url(e.target.value)}
+                      onChange={handleImageChange}
+                      // onChange={(e) => setEditImage_url(e.target.value)}
                       required
                     />
                   </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 m-0">
                   <div>
                     <label for="last_name">Product Price</label>{" "}
                     <input
                       class="form-control"
                       id="final_price"
                       type="number"
-                      name="final_price"
+                      name="price"
                       placeholder="final_price"
                       value={editFinal_price}
                       onChange={(e) => setEditFinal_price(e.target.value)}
@@ -148,15 +155,15 @@ const AddProduct = () => {
                     />
                   </div>
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-6 m-0">
                   <div>
-                    <label for="last_name">Product MRP</label>{" "}
+                    <label for="last_name">Product Quantity</label>{" "}
                     <input
                       class="form-control"
                       id="MRP"
                       type="text"
-                      name="MRP"
-                      placeholder="product MRP"
+                      name="quantity"
+                      placeholder="product quantity"
                       value={editMRP}
                       onChange={(e) => setEditMRP(e.target.value)}
                       required
@@ -166,14 +173,14 @@ const AddProduct = () => {
               </div>
 
               <div class="row">
-                <div class="col-sm-6 mb-3">
+                <div class="col-sm-6 m-0">
                   <div class="form-group">
                     <label for="address">Discount</label>{" "}
                     <input
                       class="form-control"
                       id="discount"
                       type="text"
-                      name="discount"
+                      name="star_rating_percentage"
                       placeholder="Discount"
                       value={editDiscount}
                       onChange={(e) => setEditDiscount(e.target.value)}
@@ -182,15 +189,15 @@ const AddProduct = () => {
                   </div>
                 </div>
 
-                <div class="col-sm-6 mb-3">
+                <div class="col-sm-6 m-0">
                   <div class="form-group">
                     <label for="city">Avarage Rating</label>{" "}
                     <input
                       class="form-control"
                       id="avg_rating"
                       type="text"
-                      name="avg_rating"
-                      placeholder="avg_rating"
+                      name="rating"
+                      placeholder="rating"
                       value={editAvg_rating}
                       onChange={(e) => setEditAvg_rating(e.target.value)}
                       required
@@ -199,14 +206,14 @@ const AddProduct = () => {
                 </div>
               </div>
               <div class="row">
-                <div class="col-sm-6 mb-3">
+                <div class="col-sm-6 m-0">
                   <div class="form-group">
                     <label for="city">Total Rating</label>{" "}
                     <input
                       class="form-control"
                       id="total_ratings"
                       type="text"
-                      name="total_ratings"
+                      name="rating_count"
                       placeholder="total_ratings"
                       value={editTotal_ratings}
                       onChange={(e) => setEditTotal_ratings(e.target.value)}
