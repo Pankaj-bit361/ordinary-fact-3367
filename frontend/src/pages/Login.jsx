@@ -21,6 +21,47 @@ import { async } from "@firebase/util";
 
 import LargeWithAppLinksAndSocial from "../components/Footer";
 export const Login = () => {
+
+
+
+
+
+
+  const [windowDimension,detectHW]=useState({
+    winWidth:window.innerWidth
+   })
+  
+   const detectSize=()=>{
+    detectHW({
+      winWidth:window.innerWidth
+    })
+   }
+  useEffect(()=>{
+    window.addEventListener("resize",detectSize)
+  
+    return ()=>{
+      window.removeEventListener("resize",detectSize)
+    }
+  },[windowDimension])
+  
+  console.log(windowDimension.winWidth)
+let color=""
+ if(windowDimension.winWidth>767){
+color="#2f3394"
+}else{
+  color="#00a699"
+}
+
+
+
+
+
+
+
+
+
+
+
   const [ph, setph] = useState("");
   const [user, setuser] = useState("");
   const [otp, setotp] = useState("");
@@ -39,18 +80,25 @@ export const Login = () => {
       .then((res) => setdata(res.data));
   }, []);
 
-///
-
-
 
 const onsubmit=async(e)=>{
 let data={
 email,pass
-
 }
 
-    e.preventDefault()
-    console.log(data)
+
+  e.preventDefault()
+  if(email=="admin" && pass=="admin"){
+     Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Welcome Admin Login Success',
+                showConfirmButton: false,
+                timer: 2000
+              })
+navigate("/admin")
+  }else {
+    
     axios.post(`https://distinct-blue-blazer.cyclic.app/users/login`,data)
     .then((res)=>{
         console.log(res.data)
@@ -73,6 +121,15 @@ email,pass
               })
         }
     })
+
+  }
+
+  
+
+
+   
+
+ 
 }
 
 // const clicked=()=>{
@@ -154,7 +211,7 @@ function onCatchVerify(){
               <Button
                 mt={"2%"}
                 color="white"
-                bg={"#2e3192"}
+                bg={color}
                 onClick={() => setchnage(!change)}
               >
                 {change ? "Sign in using Number" : "Sign in using Email"}
@@ -180,7 +237,7 @@ function onCatchVerify(){
               onClick={onsubmit}
               mt={"3%"}
               color="white"
-              bg={"#2e3192"}
+              bg={color}
               w={"100%"}
             >
               Sign In
@@ -204,7 +261,7 @@ function onCatchVerify(){
                 />
                 <Button
                   color="white"
-                  bg={"#2e3192"}
+                  bg={color}
                   w={"100%"}
                   mt={"3%"}
                   onClick={onSingup}
@@ -236,7 +293,7 @@ function onCatchVerify(){
                 <Button
                   w={"100%"}
                   color="white"
-                  bg={"#2e3192"}
+                  bg={color}
                   onClick={onOtpVerify}
                 >
                   Verify
@@ -253,21 +310,21 @@ function onCatchVerify(){
 
         <Text fontSize={"14px"} m="auto" w={"50%"}>
           <span>to Belks's </span>
-          <span style={{ color: "#2e3192" }}>Privacy Policy </span>
+          <span style={{ color: color }}>Privacy Policy </span>
           <span> & </span>{" "}
-          <span style={{ color: "#2e3192" }}> Terms of Use</span>
+          <span style={{ color: color }}> Terms of Use</span>
         </Text>
         <hr style={{ width: "50%", margin: "auto", marginTop: "15px" }} />
         <Link to="/signup">
           {" "}
           <Box mt={"2%"}>
             <Button
-              bg={"#721f1f"}
+              bg={color}
               background={"white"}
-              border={"1px solid #2e3192"}
+              border={`1px solid ${color}`}
               w={"50%"}
               m="auto"
-              color={"#2e3192"}
+              color={color}
             >
               Create Account
             </Button>

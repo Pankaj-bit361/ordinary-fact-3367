@@ -16,8 +16,11 @@ import image3 from "../Images/mm3.png";
 import image4 from "../Images/mm4.png";
 import image5 from "../Images/mm5.png";
 import image6 from "../Images/mm6.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 const Submenu = () => {
+
+const navigate=useNavigate()
+
   return (
     <Box w="100%" bgColor="white" p="1%" margin="auto" >
     <Box>
@@ -1002,7 +1005,8 @@ const Submenu = () => {
         </Menu>
         <Menu>
           <MenuButton>
-            <Box
+           <Link to="/products"> <Box
+            onClick={()=>navigate("/products")}
               display="flex"
               justifyContent="center"
               alignItems="center"
@@ -1013,10 +1017,10 @@ const Submenu = () => {
                 w={{ base: "45px", sm: "50px", md: "80px" }}
                 src={image3}
               />
-              <Text fontSize={{ base: "12px", sm: "14px", md: "16px" }}>
+              <Text  fontSize={{ base: "12px", sm: "14px", md: "16px" }}>
                 Drugs & Pharma
               </Text>
-            </Box>
+            </Box></Link>
           </MenuButton>
           <MenuList>
             <Grid
@@ -1033,7 +1037,7 @@ const Submenu = () => {
               }}
             >
               <Box>
-                <Link to="/Medicines">
+                <Link to="/products">
                   <MenuItem
                     fontStyle="Arial,Helvetica,sans-serif"
                     fontWeight="700"

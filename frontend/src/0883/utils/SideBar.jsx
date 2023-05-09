@@ -100,17 +100,17 @@ const SideBar = () => {
 
 	// console.log(order);
 	return (
-		<>
+		<Box boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'} borderRadius={'10px'} >
 			<Accordion
 				w='100%'
 				allowToggle
 				defaultIndex={[0]}
 				bg='root.white'
 				_dark={{ bg: "root.white" }}
-				mb={4}>
+				mb={2}>
 				<AccordionItem mb={4}>
 					<AccordionButton>
-						<Box as='span' flex='1' textAlign='left'>
+						<Box as='span' flex='1' textAlign='left' color={'black'}>
 							Sort By
 						</Box>
 						<AccordionIcon />
@@ -119,24 +119,24 @@ const SideBar = () => {
 						<Collapse startingHeight={80}>
 							<RadioGroup
 								defaultValue={order}
-								colorScheme={"red"}
-								bg={useColorModeValue(
-									"root.pink.50",
-									"#f4b1b1"
-								)}
-								color={useColorModeValue("black", "black")}
+								colorScheme={"blue"}
+								// bg={useColorModeValue(
+								// 	"blue",
+								// 	'lightblue'
+								// )}
+								color={useColorModeValue("blue", "black")}
 								padding={4}
 								borderRadius={4}
 								onChange={handleSort}>
-								<Stack>
+								<Stack >
 									{/* <Radio value='asc'>name: low to high</Radio>
 									<Radio value='desc'>
 										name: high to low
 									</Radio> */}
-									<Radio value='asc'>
+									<Radio value='asc' bg={'lightblue'}>
 										Price: Low to High
 									</Radio>
-									<Radio value='desc'>
+									<Radio value='desc' bg={'lightblue'}>
 										Price: High to Low
 									</Radio>
 								</Stack>
@@ -146,28 +146,33 @@ const SideBar = () => {
 				</AccordionItem>
 			</Accordion>
 			<Accordion
-				bg={useColorModeValue("root.white", "root.white")}
+				bg={useColorModeValue("root.white")}
 				allowToggle
 				defaultIndex={[0]}
 				// border='1px solid red'
 			>
-				<AccordionItem mb={4}>
+				<AccordionItem mb={4} >
 					<AccordionButton>
-						<Box as='span' flex='1' textAlign='left'>
+						<Box as='span' flex='1' textAlign='left' color={'black'}  >
 							BRAND
 						</Box>
 						<AccordionIcon />
 					</AccordionButton>
 					<AccordionPanel pb={4}>
-						<Collapse startingHeight={120} in={show}>
+						<Collapse startingHeight={120} in={show} >
 							{BRAND.map((location, id) => (
 								<HStack
 									spacing={4}
 									key={id}
-									onChange={handleChangeBrand}>
+									onChange={handleChangeBrand}
+									// bg={'rgb(245, 245, 245)'}
+									color={'black'}
+									// bg={'lightblue'}
+									>
 									<Checkbox
 										_dark={{ colorScheme: "green" }}
-										colorScheme='red'
+										bg={'lightblue'}
+										colorScheme='blue'
 										value={location}
 										defaultChecked={brand.includes(
 											location
@@ -181,14 +186,14 @@ const SideBar = () => {
 							w='100%'
 							onClick={handleToggle}
 							mt='1rem'
-							colorScheme='red'>
+							colorScheme='blue'>
 							Show {show ? "Less" : "More"}
 						</Button>
 					</AccordionPanel>
 				</AccordionItem>
 				<AccordionItem mb={4}>
 					<AccordionButton>
-						<Box as='span' flex='1' textAlign='left'>
+						<Box as='span' flex='1' textAlign='left' color={'black'}>
 							CATEGORY
 						</Box>
 						<AccordionIcon />
@@ -199,10 +204,14 @@ const SideBar = () => {
 								<HStack
 									spacing={4}
 									key={id}
-									onChange={handleChange}>
+									onChange={handleChange}
+									color={'black'}>
 									<Checkbox
+										bg={'lightblue'}
 										_dark={{ colorScheme: "green" }}
-										colorScheme='red'
+										colorScheme='blue'
+										// color={'black'}
+										
 										defaultChecked={category.includes(
 											location
 										)}
@@ -226,12 +235,12 @@ const SideBar = () => {
 						<Collapse startingHeight={120} in={show}>
 							{COLOR.map((location, id) => (
 								<HStack spacing={4} key={id}>
-									<Checkbox />
+									<Checkbox bg={'lightblue'} />
 									<FormLabel>{location}</FormLabel>
 								</HStack>
 							))}
 						</Collapse>
-						<Button size='sm' onClick={handleToggle} mt='1rem'>
+						<Button size='sm' onClick={handleToggle} mt='1rem' bg={'lightblue'}>
 							Show {show ? "Less" : "More"}
 						</Button>
 					</AccordionPanel>
@@ -247,7 +256,7 @@ const SideBar = () => {
 						<Collapse startingHeight={120}>
 							{FINISH.map((location, id) => (
 								<HStack spacing={4} key={id}>
-									<Checkbox />
+									<Checkbox bg={'lightblue'} />
 									<FormLabel>{location}</FormLabel>
 								</HStack>
 							))}
@@ -255,7 +264,7 @@ const SideBar = () => {
 					</AccordionPanel>
 				</AccordionItem>
 			</Accordion>
-		</>
+		</Box>
 	);
 };
 

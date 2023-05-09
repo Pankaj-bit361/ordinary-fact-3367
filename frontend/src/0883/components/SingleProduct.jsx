@@ -25,6 +25,7 @@ import { useNavigate, useParams } from "react-router-dom";
 // import { Rating } from "./ProductCard";
 import { useDispatch } from "react-redux";
 import Offers from "../utils/Offers";
+import axios from "axios";
 // import Offers from "../utils/Offers";
 export default function SingleProduct() {
 	const [data, setData] = React.useState([{ name: "loading..." }]);
@@ -35,6 +36,7 @@ export default function SingleProduct() {
 	const dispatch = useDispatch();
 	const [quantity, setQuantity] = React.useState(1);
 	const { id } = useParams();
+	console.log(id,"38")
 	React.useEffect(() => {
 		document.title = "Product Details";
 		singleData(id).then((res) => {
@@ -46,11 +48,21 @@ export default function SingleProduct() {
 		setImage(e.target.src);
 		setShow(true)
 	};
+	let token=JSON.parse(localStorage.getItem("token"))
 	const handleCart = () => {
-		dispatch(addToCart(id, { quantity }));
+		// dispatch(addToCart(id));
+		console.log(data,"line53")
+		axios.post(`https://distinct-blue-blazer.cyclic.app/cart/add`,data,{
+			headers:{
+			  Authorization:`Bearer ${token}`
+		  }
+		   }).then((res)=>{
+			console.log(res.data)
+		   })
+
 		setShow2(true);
 		alert("Item added successfully")
-		// navigate("/products/cart/payment")
+		 navigate("/cart")
 	};
 
 	return (
@@ -61,7 +73,8 @@ export default function SingleProduct() {
 				// border='1px solid red'
 				boxShadow={"xl"}
 				mt='8'
-				// bg={useColorModeValue("root.pink.50", "gray.800")}
+				color={'black'}
+				bg={useColorModeValue("root.pink.50", "gray.800")}
 			>
 				<SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
 					<Flex flexDirection='column' alignItems='center'>
@@ -196,7 +209,7 @@ export default function SingleProduct() {
 									alignItems='center'>
 									<Button
 										isDisabled={quantity === 1}
-										colorScheme={"red"}
+										colorScheme={"blue"}
 										onClick={() =>
 											setQuantity(quantity - 1)
 										}>
@@ -204,7 +217,7 @@ export default function SingleProduct() {
 									</Button>
 									<Text mx='3'>{quantity}</Text>
 									<Button
-										colorScheme={"green"}
+										colorScheme={"blue"}
 										onClick={() =>
 											setQuantity(quantity + 1)
 										}>
@@ -223,7 +236,7 @@ export default function SingleProduct() {
 								color={"gray.800"}
 								fontSize={"1em"}>
 								<Button
-									colorScheme='green'
+									colorScheme='blue'
 									ml='4'
 									w='100%'
 									onClick={handleCart}
@@ -235,7 +248,7 @@ export default function SingleProduct() {
 					</Stack>
 				</SimpleGrid>
 			</Container>
-			<Offers offers={data?.offers} />
+			<Offers offers={data?.offers}/>
 		</>
 	);
 }

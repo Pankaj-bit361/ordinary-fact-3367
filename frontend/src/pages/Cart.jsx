@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import {useDispatch, useSelector} from "react-redux"
-import { getCartProducts, updateCartSuccess, updateCartdata } from '../redux/Cart/action'
+import { deleteCartdata, getCartProducts, updateCartSuccess, updateCartdata } from '../redux/Cart/action'
 import { Box, Button, Center, Divider, Flex, Grid, Image, Select, SimpleGrid, Spacer, Text } from '@chakra-ui/react'
 import { AiOutlineHeart } from 'react-icons/ai'
 // import  "../components/cart.css"
 import styled from 'styled-components';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 const Cart = () => {
     const [state,setState] = useState([])
 
 const [count,setcount]=useState(0)
 const dispatch=useDispatch()
-
+const navigate=useNavigate()
+let token=JSON.parse(localStorage.getItem("token"))
 const data=useSelector((state)=>state.CartReducer.products)
 // console.log(data)
 let total=0;
-for(var i=0;i<data.length;i++){
-    total+=data[i].quantity*data[i].price
+for(var i=0;i<data?.length;i++){
+    total+=data[i]?.quantity*data[i]?.price
 }
 useEffect(()=>{
 dispatch(getCartProducts())
@@ -36,7 +38,16 @@ console.log(data)
 //     dispatch(getCartProducts())
 // },[location.search])
 
+const removeprod=(id)=>{
+dispatch(deleteCartdata(id)).then(()=>dispatch(getCartProducts()))
+}
 
+const postandeleteall=()=>{
+
+
+ navigate("/payment")
+
+}
 
   return (
     <DIV>
@@ -50,39 +61,39 @@ console.log(data)
     <Box mb="2%" p="3%">
     <Grid ml="" templateColumns="repeat(3,1fr)" >
         <Box gridColumnStart={1} gridColumnEnd={2}>
-            <Image src={item.images.image1} w="65%" />
+            <Image src={item?.media[0]?.url} w="65%" />
         </Box>
         <Box gridColumnStart={2} gridColumnEnd={3} mt="2%" >
-           <Text textAlign={"left"} fontWeight={"700"} fontFamily={"app"} fontSize={"1.4vw"} > {item.title.length>=16?item.title.substring(0,16)+"...":item.title}</Text>
-           <Flex   gap="5%" textAlign={"left"}  fontSize={"1.2vw"}>
-           <Text fontWeight={"600"}>Price:</Text>
-            <Text fontWeight={"600"} textAlign={"left"}>Rs.{item.price}</Text></Flex> 
-            <Flex  gap="5%" textAlign={"left"} fontWeight={"600"} fontSize={"1.1vw"}>
-            <Text fontWeight={"600"}>Rating:</Text>
-                <Text fontWeight={"600"}>{item.rating}</Text>
+           <Text textAlign={"left"} fontWeight={"700"} fontFamily={"app"}fontSize={["2vw","1.8vw","1.1vw"]} > {item?.name.length>=16?item?.name?.substring(0,16)+"...":item?.name}</Text>
+           <Flex   gap="5%" textAlign={"left"}  fontSize={["2vw","1.8vw","1.1vw"]}>
+           <Text fontWeight={"600"} fontSize={["2vw","2vw","1.1vw"]}>Price:</Text>
+            <Text fontWeight={"600"} textAlign={"left"} fontSize={["2vw","1.8vw","1.1vw"]}>Rs.{item?.price}</Text></Flex> 
+            <Flex  gap="5%" textAlign={"left"} fontWeight={"600"} fontSize={["2vw","1.8vw","1.1vw"]}>
+            <Text fontWeight={"600"} fontSize={["2vw","1.8vw","1.1vw"]}>Rating:</Text>
+                <Text fontWeight={"600"} fontSize={["2vw","1.8vw","1.1vw"]}>{item?.rating}</Text>
             </Flex>
             <Flex gap="5%" mt="5%">
 <Box border={"1px solid black"}  w="40%" ><Flex justifyContent={"center"} mt="10%"><AiOutlineHeart size={"25"}/></Flex>  </Box>
-<Select w="40%" border={"1px solid black"} borderRadius={"0%"} onChange={(e)=>handlechange(item.id,e)} >
+<Select w="40%" border={"1px solid black"} borderRadius={"0%"} onChange={(e)=>handlechange(item?._id,e)} >
     <option>1</option>
     <option>2</option>
     <option>3</option>
     <option>4</option>
     <option>5</option>
-</Select>
+</Select> 
             </Flex>
         </Box>
         <Box gridColumnStart={3}   gridColumnEnd={4}>
 
 <Flex mt="5%"  ml="5%" fontWeight={600} gap="10%">
-    <Text fontWeight={"600"}  fontSize={"1.1vw"}>Category:</Text>
-    <Text fontWeight={"600"} fontSize={"1.1vw"}>{item.categories}</Text>
+    <Text fontWeight={"600"} fontSize={["1.5vw","1.8vw","1.1vw"]}>Brand:</Text>
+    <Text fontWeight={"600"} fontSize={["1.5vw","1.8vw","1.1vw"]}>{item?.brand_name}</Text>
 </Flex>
-<Flex mt="5%" ml="5%" fontWeight={600} gap="10%">
-    <Text fontWeight={"600"} fontSize={"1.1vw"}>Color:</Text>
-    <Text fontWeight={"600"} fontSize={"1.1vw"}>{item.color}</Text>
+<Flex mt="5%" ml="5%" fontWeight={600} gap="5%">
+    <Text fontWeight={"600"} fontSize={["1.5vw","1.8vw","1.1vw"]}>popularity:</Text>
+    <Text fontWeight={"600"} fontSize={["1.5vw","1.8vw","1.1vw"]}>{item?.tracking_metadata?.popularity}</Text>
 </Flex>
-<Button fontWeight={"600"}  mt="20%" w="60%" bg="#2e3192"  color={"white"} >Remove</Button>
+<Button fontWeight={"600"}  mt="8%" w="60%" bg="#2e3192" onClick={()=>removeprod(item?._id)} color={"white"} >Remove</Button>
 
 {/* bg={item.color==="white"?"black":item.color} */}
         </Box>
@@ -111,7 +122,7 @@ console.log(data)
 <Text fontWeight={"700"} >Total</Text>
 <Text fontWeight={"700"}>FREE </Text>
 </Flex>
-<Button mt="5%" w="100%" bg="#2e3192" color="white">Continue to Checkout</Button>
+<Button mt="5%" w="100%" bg="#2e3192" onClick={postandeleteall} color="white">Continue to Checkout</Button>
 <Flex mt="5%" justifyContent={'space-around'}>
     <Text mt="1%" fontWeight={600} fontSize={"1.1vw"}>Cash on Delivery</Text>
     <Image w="10%"  src={"https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-mastercard-logo-png-vector-download-19.png"}/>

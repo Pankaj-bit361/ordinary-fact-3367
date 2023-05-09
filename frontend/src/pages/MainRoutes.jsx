@@ -12,7 +12,7 @@ import Category from "./Category";
 import SingleProduct from "../0883/components/SingleProduct";
 import { Login } from "./Login";
 import Signup from "./Signup";
-
+import PaymentPage from "../components/PaymentPage";
 const MainRoute = () => {
   return (
     <div>
@@ -24,12 +24,14 @@ const MainRoute = () => {
         <Route path="/product-list" element={<ProductList />} />
         <Route path="/cart" element={<Cart/>}></Route>
         <Route path="/add-product" element={<AdminAddProduct />}></Route>
-        <Route path="/edit-product/:id" element={<AdminEditProduct />}></Route> 
+        <Route path="/edit-product/:id" element={<AdminEditProduct />}></Route>
+        {/* <Route path="/edit-product/:id" element={<AdminEditProduct />}></Route>  */}
         <Route path="/user-list" element={<UserList />} />
         <Route path="/order-list" element={<OrderList />} />
         <Route path='/products' element={<Category />} />
+        <Route path='/payment' element={<PaymentPage />} />
 				<Route path='/products/:id' element={<SingleProduct />} />
-       
+        {/* <Route path="*" element={<PageNotFound />}></Route> */}
       </Routes>
     </div>
   );

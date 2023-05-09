@@ -8,7 +8,7 @@ import Pagination from "./Pagination";
 import { ProductCard } from "./ProductCard.tsx";
 const Products = () => {
 	const { products, loading, error,total } = useSelector((state) => state.productReducer);
-
+	console.log(products,"product check")
 	const ok=useSelector((state)=>state)
 	console.log(ok)
 	const [searchParams, setSearchParams] = useSearchParams();

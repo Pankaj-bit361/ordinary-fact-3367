@@ -7,14 +7,17 @@ import {BsQuestionCircle} from "react-icons/bs"
 import {BiMessageDetail} from "react-icons/bi"
 import {AiOutlineSearch} from "react-icons/ai"
 import {CgProfile} from "react-icons/cg"
+import { Link, useNavigate } from 'react-router-dom'
 const Navbar = () => {
+const navigate=useNavigate()
+
     const [ok,setok]=useState(false)
   return (
    <Box padding={"1%"} border={"1px solid black"} bg="#2e3192" >
    <Box w="95%" m="auto">
 <Grid templateColumns='repeat(2, 1fr)' gap="2%">
 <Grid  templateColumns='repeat(9, 1fr)' id="box1" >
-    <Image  marginLeft={"-8%"} mt="8%" src={logo} gridColumnStart={1}  gridColumnEnd={3}/>
+   <Image onClick={()=>navigate("/")}  marginLeft={"-8%"} mt="8%" src={logo} gridColumnStart={1}  gridColumnEnd={3}/>
     {/* <Text color={"white"}  gridColumnStart={1}  gridColumnEnd={3} fontSize={"1rem"}>🅽🅾🆅🅰🅼🅰🆁🆃</Text> */}
     <Select borderRadius={"0px"} color="#2e3192" bg="white"  gridColumnStart={3}  gridColumnEnd={5}>
         <option>All India</option>
@@ -52,7 +55,7 @@ const Navbar = () => {
   <Box ml="32%"><BiMessageDetail/></Box> 
     <Text fontSize={"1.2vw"}>Messages</Text>
    </Box>
-   <Box>
+   <Box onClick={()=>navigate("/login")}>
    <Box  ml="22%"><CgProfile/></Box>
     <Text fontSize={"1.2vw"}>login</Text>
    </Box>

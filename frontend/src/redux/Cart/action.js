@@ -23,12 +23,21 @@ export const DeleteCartSuccess = () => {
 export const updateCartSuccess = (payload) => {
   return { type: UPDATE_CART_SUCCESS,payload};
 };
+
+
+
 export const getCartProducts = () => (dispatch) => {
+
+  let token=JSON.parse(localStorage.getItem("token"))
     dispatch(getCartProductsRequestAction());
    return axios
-     .get("https://determined-gold-jaguar.cyclic.app/women?_limit=3")
+     .get("https://distinct-blue-blazer.cyclic.app/cart",{
+      headers:{
+        Authorization:`Bearer ${token}`
+    }
+     })
      .then((res) => {
-      // console.log(res.data,"line 29")
+       console.log(res.data,"line 29")
        dispatch(getCartProductsSuccessAction(res.data));
      })
      .catch((err) => {
@@ -37,6 +46,8 @@ export const getCartProducts = () => (dispatch) => {
 };
 
 export const postCartRequest = (payload) => (dispatch) => {
+  
+let token=JSON.parse(localStorage.getItem("token"))
     dispatch(getCartProductsRequestAction());
     axios
       .post("https://determined-gold-jaguar.cyclic.app/women", payload)
@@ -51,10 +62,17 @@ export const postCartRequest = (payload) => (dispatch) => {
 
 
 export const deleteCartdata = (id) => (dispatch) => {
+
+  let token=JSON.parse(localStorage.getItem("token"))
     dispatch(getCartProductsRequestAction());
     return axios
-      .delete(`https://determined-gold-jaguar.cyclic.app/women/${id}`)
+      .delete(`https://distinct-blue-blazer.cyclic.app/cart/delete/${id}`,{
+        headers:{
+          Authorization:`Bearer ${token}`
+      }
+      })
       .then((res) => {
+        console.log(res)
         dispatch(DeleteCartSuccess());
       })
       .catch((err) => {
@@ -64,13 +82,19 @@ export const deleteCartdata = (id) => (dispatch) => {
   }
 
 export const updateCartdata = (id,payload) => (dispatch) => {
+  
+let token=JSON.parse(localStorage.getItem("token"))
   console.log("hello",id,payload)
     dispatch(getCartProductsRequestAction());
     return axios
-      .patch(`https://determined-gold-jaguar.cyclic.app/women/${id}`,payload)
+      .patch(`https://distinct-blue-blazer.cyclic.app/cart/update/${id}`,payload,{
+        headers:{
+          Authorization:`Bearer ${token}`
+      }
+      })
       .then((res) => {
-        console.log(res.data,"line71")
-        dispatch(updateCartSuccess(res.data));
+        console.log(res.data.data,"line71 please check")
+        dispatch(updateCartSuccess(res.data.data));
         getCartProducts()
       })
       .catch((err) => {

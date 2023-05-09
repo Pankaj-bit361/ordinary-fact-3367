@@ -9,7 +9,7 @@ import axios from "axios";
   Button,} from '@chakra-ui/react';
 
   import Swal from 'sweetalert2'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import "../components/css/singup.css";
@@ -52,6 +52,30 @@ dispatch(logintry(adddetails))
 })
 }
 
+const [windowDimension,detectHW]=useState({
+  winWidth:window.innerWidth
+ })
+
+ const detectSize=()=>{
+  detectHW({
+    winWidth:window.innerWidth
+  })
+ }
+useEffect(()=>{
+  window.addEventListener("resize",detectSize)
+
+  return ()=>{
+    window.removeEventListener("resize",detectSize)
+  }
+},[windowDimension])
+
+console.log(windowDimension.winWidth)
+let color=""
+if(windowDimension.winWidth>767){
+color="#2f3394"
+}else{
+color="#00a699"
+}
 
   
   return (
@@ -100,16 +124,16 @@ dispatch(logintry(adddetails))
           
               </div>
        <br/>
-       <button id="fixbutton"  type='submit' >Create Account</button>
+       <button id="fixbutton" style={{backgroundColor:color}} type='submit' >Create Account</button>
        <Box >By Placing your order, you agree to Belk's</Box>
        <Box id="span">
-        <span >Priavacy Policy </span>
+        <span   style={{color:color}}>Priavacy Policy </span>
         <span> & </span>
-        <span> Term of Use</span>
+        <span  style={{color:color}}> Term of Use</span>
        </Box>
       </form>
       <hr className="hr"/>
-   <div id="all"><span>Already have account? </span> <Link><span >Sign In</span></Link> </div>
+   <div id="all"><span>Already have account? </span> <Link to="/login"><span  style={{color:color}}>Sign In</span></Link> </div>
     </div>
     
     </>

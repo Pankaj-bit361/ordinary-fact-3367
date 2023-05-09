@@ -1,11 +1,12 @@
 import * as types from "./actionTypes";
 import axios from "axios";
-const URL = "https://obtainable-gray-tenor.glitch.me/allproducts";
+const URL = "https://distinct-blue-blazer.cyclic.app/pharma";
 export const getProduct = (params) => (dispatch) => {
 	dispatch({ type: types.GET_PRODUCT_REQUEST });
 	axios
 		.get(URL, params)
 		.then((res) => {
+			console.log(res,"line 9")
 			const total = res.headers["x-total-count"];
 			const obj = { total: total, data: res.data };
 			dispatch({ type: types.GET_PRODUCT_SUCCESS, payload: obj });
@@ -15,17 +16,18 @@ export const getProduct = (params) => (dispatch) => {
 		});
 };
 
-export const singleData = (id) => {
+export const singleData = async (id)  => {
+	console.log(id,"signledata")
 	return axios
-		.get(`https://obtainable-gray-tenor.glitch.me/allproducts/${id}`)
-		.then((res) => res.data)
-		.catch((err) => console.log(err));
+	.get(`https://distinct-blue-blazer.cyclic.app/pharma/${id}`)
+	.then((res) => res.data)
+	.catch((err) => console.log(err));
 };
 
 export const addToCart = (id, data) => (dispatch) => {
 	return axios
 		.patch(
-			`https://obtainable-gray-tenor.glitch.me/allproducts/${id}`,
+			`https://distinct-blue-blazer.cyclic.app/cart/${id}`,
 			data
 		)
 		.then((res) => {
@@ -37,7 +39,7 @@ export const addToCart = (id, data) => (dispatch) => {
 
 function postRequestToCar(data) {
 	return axios
-		.post("https://obtainable-gray-tenor.glitch.me/cart", data)
+		.post("https://distinct-blue-blazer.cyclic.app/cart", data)
 		.then((res) => {
 			// console.log(res.data);
 				console.log('data posted to the cart');

@@ -21,8 +21,12 @@ const Footer = () => {
       },[windowDimension])
       
       console.log(windowDimension.winWidth)
+let color=""
+if(windowDimension.winWidth>767?color="#2f3394":color="#00a699")
+
+
   return (
-    <Box p="2%" mt={["5%","5%","3%"]} bg="#00a699" color="white">
+    <Box p="2%" mt={["5%","5%","3%"]} bg={color} color="white">
 
  {windowDimension.winWidth>1000? <Box >
         <Grid gridTemplateColumns={"repeat(2,1fr)"}>
@@ -50,7 +54,7 @@ const Footer = () => {
 
 
 
-    <Box   mt={["5%","5%","3%"]} bg="#00a699" >
+    <Box   mt={["5%","5%","3%"]} bg={color} >
     <SimpleGrid columns={[2,2,4]} m="auto" w="80%" gap="2%" textAlign={"left"}>
         <Box  id="box1">
 
