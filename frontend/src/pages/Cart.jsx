@@ -67,10 +67,7 @@ dispatch(deleteCartdata(id)).then(()=>dispatch(getCartProducts()))
 }
 
 const postandeleteall=()=>{
-
-
  navigate("/payment")
-
 }
 
   return (
@@ -83,7 +80,7 @@ const postandeleteall=()=>{
 <Box className='box1'  bg="white" gridColumnStart={1} gridColumnEnd={8} >
 <SimpleGrid columns={[1]}>
 {data?.map((item)=>(
-    <Box mb="2%" p="3%">
+    <Box mb="2%" p="3%" key={item._id}>
     <Grid ml="" templateColumns="repeat(3,1fr)" >
         <Box gridColumnStart={1} gridColumnEnd={2}>
             <Image src={item?.media[0]?.url} w="65%" />
@@ -156,7 +153,7 @@ const postandeleteall=()=>{
 <Flex  justifyContent={'space-around'}>
    <Image mt="5%" height={"4vh"} w="15%"  src="https://seeklogo.com/images/E/EMI-logo-C397570FF2-seeklogo.com.png" />
     <Image mt="5%" height={"5vh"} w="25%"  src={"https://upload.wikimedia.org/wikipedia/commons/0/0f/RuPay-Logo.png"}/>
-    <Image  w="20%" src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/upi-icon.png" />
+    <Image mt="4%" w="20%" src="https://static.businessworld.in/article/article_extra_large_image/1589892172_FHqF6Z_UPI.jpg" />
 </Flex>
 </Box>
     </Grid>

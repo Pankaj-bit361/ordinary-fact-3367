@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Mobnav from "./components/Mobnav";
 import Navbar from "./components/Navbar";
 import MainRoute from "./pages/MainRoutes";
+import { Box } from "@chakra-ui/react";
 
 function App() {
 
@@ -27,13 +28,13 @@ function App() {
   console.log(windowDimension.winWidth);
 
 
-  return <div>
+  return <Box bgColor={"white"}>
 {/* {windowDimension.winWidth>767?<Navbar/>:<Mobnav/>} */}
 
   
 
 <MainRoute />
-  </div>;
+  </Box>;
 }
 
 export default App;
