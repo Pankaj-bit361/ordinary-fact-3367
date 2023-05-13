@@ -1,6 +1,8 @@
 # ordinary-fact-3367
+Home Page
+![Home](https://github.com/Pankaj-bit361/ordinary-fact-3367/assets/64821457/13b0448a-31a3-4490-a12c-8ddcb05610e4)
 
-Home Page![image](https://github.com/Pankaj-bit361/ordinary-fact-3367/assets/64821457/e0fac018-5c64-4a8a-9c94-a124a60ce81a)
+
 
 Product Page![Product](https://github.com/Pankaj-bit361/ordinary-fact-3367/assets/64821457/50aa12e8-9fec-4cdb-9818-01fe9070d353)
 
